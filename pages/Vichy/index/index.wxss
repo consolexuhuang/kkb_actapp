@@ -1,0 +1,105 @@
+/* pages/Vichy/index/index.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+swiper{
+  width: 100%;
+  height: 100%;
+}
+.item{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.bannerImg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+.btnBox{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100rpx;
+  margin: 0 auto;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.btn{
+  width: 600rpx;
+  font-size:36rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:90rpx;
+  text-align: center;
+  background: #1472B3;
+  margin: 0 auto;
+}
+/* -------------------------------------指引箭头 */
+.chevronBox {
+    position: relative;
+    width: 50rpx;
+    height: 50rpx;
+    margin: 10rpx auto 0;
+}
+.chevron {
+    position: absolute;
+    width: 40rpx;
+    height: 8rpx;
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+    animation: move 2s ease-out infinite;
+}
+.chevron:first-child {
+    animation: move 2s ease-out 1s infinite;
+}
+.chevron:nth-child(2) {
+    animation: move 2s ease-out 2s infinite;
+}
+.chevron:before,
+.chevron:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: #fff;
+}
+.chevron:before {
+    left: 0;
+    transform: skew(0deg, 30deg);
+}
+.chevron:after {
+    right: 0;
+    width: 50%;
+    transform: skew(0deg, -30deg);
+}
+@keyframes move {
+    25% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 1;
+        transform: translateY(30rpx);
+    }
+    67% {
+        opacity: 1;
+        transform: translateY(40rpx);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(55rpx) scale3d(0.5, 0.5, 0.5);
+    }
+}
+/* @keyframes pulse {
+    to {
+        opacity: 1;
+    }
+} */

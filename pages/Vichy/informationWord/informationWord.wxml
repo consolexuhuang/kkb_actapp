@@ -1,0 +1,60 @@
+<!--pages/informationWord/informationWord.wxml-->
+<view class="informationBox animated fadeIn">
+   <text class="information_title">手机号授权</text>
+   <view class="information_tip"><text class="needTig">*</text>兑换时的唯一凭证</view>
+   <view class="information_phone">
+      微信手机号授权
+      <button open-type="getPhoneNumber" bindgetphonenumber='getPhoneNumber' class="phoneBtn"></button>
+   </view>
+   <text class="information_title">选择领取门店</text>
+   <view class="information_tip"><text class="needTig">*</text>选择门店后不可修改</view>
+   <view class="storeChooseBox">
+      <picker mode = 'selector' bindchange="bindPickerChange" value="{{place_index}}" range="{{placeLoaction}}">
+         <view class="storeChooseBoxLeft">
+            <text class="animated fadeIn" wx:for='{{storeLoaction}}' wx:key='index' wx:if='{{place_index == index}}'>{{placeLoaction[place_index]}}</text>
+            <text class="iconlujing-1 iconfont dirIcon"></text>
+         </view>
+      </picker>
+      <picker mode = 'selector' bindchange="bindPickerChange_store" value="{{store_index}}" range="{{storeLoaction}}">
+         <view class="storeChooseBoxRight" animation="{{animationData}}">
+            <text class="animated fadeIn" wx:for='{{storeLoaction}}' wx:key='index' wx:if='{{store_index == index}}'>{{storeLoaction[store_index]}}</text>
+            <text class="iconlujing-1 iconfont dirIcon"></text>
+         </view>
+      </picker>
+   </view>
+   <view class="store_tip">
+      <text class="icondingwei iconfont icon"></text>
+      <text class="storeDetail">上海市黄浦京西路139号（距您13km）</text>
+   </view>
+   <!-- <view class="store_tip">
+      <text class="iconshijian iconfont icon2"></text>
+      <text class="storeDetail">领取日期：2019-10-11至2019-10-14</text>
+   </view> -->
+
+   <text class="information_title">确认领取日期</text>
+   <view class="storeChooseBox">
+      <picker mode = 'date' style="width:100%" bindchange="bindDateChange" value="{{date}}" start="2019-10-01" end="2019-10-04">
+         <view class="timeChooseBoxLeft">
+            <text class="animated fadeIn">{{date}}</text>
+            <text class="iconlujing-1 iconfont dirIcon"></text>
+         </view>
+      </picker>
+   </view>
+   
+   <view class="information_ruleBorder">
+      <view class="information_rule">
+          <view class="information_ruleBox">
+              <text class="iconfuxuankuang_xuanzhongcopy iconfont icon2"></text>
+              <view class="information_ruleText">我已清楚本次 <text class="link">活动规则</text>，参与活动即代表同意本次活动规则。活动规则最终解释权归上海凯卡博健康管理有限公司及欧莱雅中国集团所有。 </view>
+          </view>
+          <view class="information_ruleBox" bindtap="allowMessg">
+              <text class="{{allowMessgState ? 'iconfuxuankuang_xuanzhongcopy' : 'iconfuxuankuang_xuanzhong'}} iconfont icon2"></text>
+              <view class="information_ruleText">我不同意薇姿及所在欧莱雅中国集团向其发送邮件、彩 信或致电。
+              </view>
+          </view>
+      </view>
+   </view>
+   <view class="submitBox">
+     <view class="submit">提交</view>
+   </view>
+</view>

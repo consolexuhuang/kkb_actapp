@@ -1,0 +1,14 @@
+<!--pages/Vichy/index/index.wxml-->
+<swiper vertical='true' current='{{currentIndex}}'>
+  <swiper-item class="item" wx:for='{{index_banner}}' wx:key='index'>
+    <image src="{{item}}" class="bannerImg" lazy-load='true'/>
+    <view class="btnBox">
+       <view class="btn">免费申领</view>
+       <view class="chevronBox" wx:if='{{index !== index_banner.length-1}}' bindtap="nextBanner" data-index="{{index}}">
+          <div class="chevron"></div>
+          <div class="chevron"></div>
+          <div class="chevron"></div>
+       </view>
+    </view>
+  </swiper-item>
+</swiper>

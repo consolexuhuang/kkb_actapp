@@ -1,0 +1,213 @@
+/* pages/informationWord/informationWord.wxss */
+page{
+  background-image: url('https://img.cdn.powerpower.net/5d9ff439e4b0279d603b4a8b.png');
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.informationBox{
+  width:630rpx;
+  background:rgba(255,255,255,1);
+  text-align: center;
+  padding: 60rpx 0;
+  box-sizing: border-box;
+}
+
+.information_title{
+   font-size:36rpx;
+   font-family:PingFangSC-Medium,PingFangSC;
+   font-weight:500;
+   color:rgba(20,20,20,1);
+   line-height:36rpx;
+   position: relative;
+}
+.information_title::after{
+  content: '';
+  position: absolute;
+  width:30rpx;
+  height:4rpx;
+  background:linear-gradient(270deg,rgba(51,51,51,1) 0%,rgba(216,216,216,1) 80%,rgba(255, 255, 255, 0) 100%);
+  left: -80rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+.information_title::before{
+  content: '';
+  position: absolute;
+  width:30rpx;
+  height:4rpx;
+  background:linear-gradient(90deg,rgba(51,51,51,1) 0%,rgba(216,216,216,1) 80%,rgba(255, 255, 255, 0) 100%);
+  right: -80rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+.information_tip{
+  font-size:22rpx;
+  font-family:PingFangSC-Light,PingFangSC;
+  font-weight:300;
+  color:rgba(102,102,102,1);
+  line-height:22rpx;
+  margin-top: 20rpx;
+  text-align: center;
+}
+.needTig{
+  color: #FF001F
+}
+.information_phone{
+  width: 320rpx;
+  background:rgba(34,34,34,1);
+  border:1rpx solid rgba(151,151,151,1);
+  font-size:28rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  line-height:90rpx;
+  text-align: center;
+  margin: 20rpx auto 30rpx;
+  position: relative;
+}
+.phoneBtn{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  left: 0;
+  top: 0
+}
+.storeChooseBox{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60rpx;
+  margin: 30rpx 0 20rpx;
+}
+.timeChooseBoxLeft{
+  width:100%;
+  padding: 0 35rpx 0 35rpx;
+  box-sizing: border-box;
+  height:80rpx;
+  border:2rpx solid rgba(34,34,34,1);
+  font-size:28rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  position: relative;
+  text-align: left;
+}
+.storeChooseBoxLeft{
+  width:150rpx;
+  padding: 0 35rpx 0 10rpx;
+  box-sizing: border-box;
+  height:80rpx;
+  border:2rpx solid rgba(34,34,34,1);
+  font-size:28rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.dirIcon{
+  font-size: 14rpx;
+  color: #222;
+  transform: rotate(90deg);
+  position: absolute;
+  right: 15rpx;
+}
+.storeChooseBoxRight{
+  width:335rpx;
+  padding: 6rpx 35rpx 6rpx 10rpx;
+  box-sizing: border-box;
+  min-height:80rpx;
+  border:2rpx solid rgba(34,34,34,1);
+  font-size:28rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  position: relative;
+  text-align: left;
+}
+.store_tip{
+  display: flex;
+  padding: 0 60rpx;
+  box-sizing: border-box;
+  margin-bottom: 50rpx;
+  align-items: center;
+}
+.icon{
+  font-size: 28rpx;
+  color: #222;
+  margin-right: 14rpx;
+  align-self: flex-start
+}
+.icon2{
+  font-size: 24rpx;
+  color: #222;
+  margin-right: 14rpx;
+  padding: 2rpx;
+  align-self: flex-start
+}
+.storeDetail{
+  font-size:24rpx;
+  font-family:PingFangSC-Light,PingFangSC;
+  font-weight:300;
+  color:rgba(51,51,51,1);
+  line-height:28rpx;
+  text-align: left;
+}
+.information_ruleBox{
+  display: flex;
+  margin-bottom: 10rpx;
+}
+.information_rule{
+  padding-top: 30rpx;
+  border-top: 1rpx dashed #B4B4B4;
+}
+.information_ruleText{
+  text-align: left;
+  font-size:20rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(180,180,180,1);
+  line-height:25rpx;
+}
+.information_ruleBorder{
+  padding: 0rpx 60rpx 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.information_rule{
+  /* font-size: 10rpx;
+  color: #B4B4B4;
+  align-self: flex-start; */
+}
+.link{
+   color: #4F99F0;
+   text-decoration: underline
+}
+.submitBox{
+  padding: 0 60rpx;
+  box-sizing: border-box;
+}
+.submit{
+  width: 100%;
+  background:rgba(255,255,255,1);
+  border:3rpx solid rgba(51,51,51,1);
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:80rpx;
+  text-align: center;
+}
