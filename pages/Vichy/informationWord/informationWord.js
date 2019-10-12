@@ -89,4 +89,10 @@ Page({
       allowMessgState: !this.data.allowMessgState
     })
   },
+  // 活动规则
+  jumpToRuleDetail(){
+    wx.navigateTo({
+      url: '/pages/Vichy/ruleDetail/ruleDetail',
+    })
+  },
 })

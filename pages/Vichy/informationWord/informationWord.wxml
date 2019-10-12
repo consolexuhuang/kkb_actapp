@@ -45,7 +45,7 @@
       <view class="information_rule">
           <view class="information_ruleBox">
               <text class="iconfuxuankuang_xuanzhongcopy iconfont icon2"></text>
-              <view class="information_ruleText">我已清楚本次 <text class="link">活动规则</text>，参与活动即代表同意本次活动规则。活动规则最终解释权归上海凯卡博健康管理有限公司及欧莱雅中国集团所有。 </view>
+              <view class="information_ruleText">我已清楚本次 <text class="link" bindtap="jumpToRuleDetail">活动规则</text>，参与活动即代表同意本次活动规则。活动规则最终解释权归上海凯卡博健康管理有限公司及欧莱雅中国集团所有。 </view>
           </view>
           <view class="information_ruleBox" bindtap="allowMessg">
               <text class="{{allowMessgState ? 'iconfuxuankuang_xuanzhongcopy' : 'iconfuxuankuang_xuanzhong'}} iconfont icon2"></text>

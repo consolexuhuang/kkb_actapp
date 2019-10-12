@@ -1,0 +1,32 @@
+<!--pages/Vichy/ruleDetail/ruleDetail.wxml-->
+<view class="ruleDetailBox">
+   <view class="ruleTitle">活动规则</view>
+   <view class="ruleConBox">
+      <text class="point"></text>
+      <view class="ruleCon">1.本次活动由Justin&Julie Fitness与Vichy薇姿联合举办，礼品数量共计50000份！</view>
+   </view>
+   <view class="ruleConBox">
+      <text class="point"></text>
+      <view class="ruleCon">2.每份Vichy薇姿礼包含有薇姿89精华1.5ml*1；薇姿89眼霜1ml*1；薇姿温泉矿物系列水活霜1.5ml*3。</view>
+   </view>
+   <view class="ruleConBox">
+      <text class="point"></text>
+      <view class="ruleCon">3.礼品申请截止时间为2019年10月31日，礼品领取时间为2019年11月1日至11月3日。</view>
+   </view>
+   <view class="ruleConBox">
+      <text class="point"></text>
+      <view class="ruleCon">4.礼品只能在指定时间，前往指定门店领取，选择后不可更改。</view>
+   </view>
+   <view class="ruleConBox">
+      <text class="point"></text>
+      <view class="ruleCon">5.礼品数量有限，逾期未领取即视为放弃领取资格，奖品不予保留。</view>
+   </view>
+   <view class="ruleConBox">
+      <text class="point"></text>
+      <view class="ruleCon">6.每位用户活动期间仅一次申领机会，不可重复申领！</view>
+   </view>
+
+   <view class="logo">
+      <image src="https://img.cdn.powerpower.net/5da1807fe4b0697c15ae69ce.png" class="logoImg"></image>
+   </view>
+</view>

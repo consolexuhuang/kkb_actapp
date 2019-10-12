@@ -55,7 +55,8 @@ page{
   text-align: center;
 }
 .needTig{
-  color: #FF001F
+  color: #FF001F;
+  margin-right: 4rpx;
 }
 .information_phone{
   width: 320rpx;
