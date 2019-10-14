@@ -2,9 +2,11 @@
 page{
   background-image: url('https://img.cdn.powerpower.net/5d9ff439e4b0279d603b4a8b.png');
   background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100%;
 }
 .ruleDetailBox{
@@ -13,6 +15,7 @@ page{
   text-align: center;
   padding: 60rpx 28rpx 60rpx 48rpx;
   box-sizing: border-box;
+  /* margin: 63rpx auto 45rpx */
 }
 .ruleTitle{
   font-size:36rpx;

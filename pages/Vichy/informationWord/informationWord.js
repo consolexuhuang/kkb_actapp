@@ -95,4 +95,9 @@ Page({
       url: '/pages/Vichy/ruleDetail/ruleDetail',
     })
   },
+  submit(){
+    wx.navigateTo({
+      url: '/pages/Vichy/exchange/exchange',
+    })
+  }
 })

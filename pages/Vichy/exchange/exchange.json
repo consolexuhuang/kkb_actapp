@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "兑换页",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "van-popup": "/libs/vant-weapp/dist/popup/index"
+  }
+}
