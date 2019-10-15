@@ -1,1 +1,36 @@
 /* pages/Vichy/checkSale/checkSale.wxss */
+page{
+  background-image: url('https://img.cdn.powerpower.net/5d9ff439e4b0279d603b4a8b.png');
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; */
+}
+.checkSaleBox{
+  width:630rpx;
+  background:rgba(255,255,255,1);
+  text-align: center;
+  padding-bottom: 46rpx;
+  box-sizing: border-box;
+  margin: 100rpx auto 45rpx
+}
+.headImg{
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  margin-top: -64rpx;
+}
+.currentInvitation{
+  font-size:42prx;
+  font-family:PingFangSC-Light,PingFangSC;
+  font-weight:300;
+  color:rgba(20,20,20,1);
+  line-height:68rpx;
+  margin:30rpx auto 30rpx;
+}
+.currentInvitationNum{
+  color:rgba(208,2,27,1);
+}

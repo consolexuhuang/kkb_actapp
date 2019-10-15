@@ -1,4 +1,7 @@
 <!--pages/Vichy/checkSale/checkSale.wxml-->
 <view class="checkSaleBox">
-   
+   <image class="headImg" src="https://wx.qlogo.cn/mmopen/vi_32/RC66AgmvL5B7onSJJskOcg2hYHr8dd3fI2kPXg7r6EP5CcgOgqvvcd5XmK8u3nJxRNib9LK8vEt4GvMhiaojvtAA/132"></image>
+   <view class="currentInvitation">目前累积邀请 
+       <text class="currentInvitationNum">2</text> 人
+   </view>
 </view>

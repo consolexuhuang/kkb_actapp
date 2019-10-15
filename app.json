@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/Vichy/checkSale/checkSale",
     "pages/Vichy/exchange/exchange",
     "pages/Vichy/index/index",
     "pages/Vichy/ruleDetail/ruleDetail",
     "pages/Vichy/informationWord/informationWord",
     "pages/noFind/noFind",
-    "pages/logs/logs",
-    "pages/Vichy/checkSale/checkSale"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
