@@ -1,6 +1,6 @@
 /* pages/informationWord/informationWord.wxss */
 page{
-  background-image: url('https://img.cdn.powerpower.net/5d9ff439e4b0279d603b4a8b.png');
+  background-image: url('https://img.cdn.powerpower.net/5da96ab7e4b0551951d0c4e7.png');
   background-size: 100% 100%;
   background-repeat:no-repeat;
   background-attachment: fixed;

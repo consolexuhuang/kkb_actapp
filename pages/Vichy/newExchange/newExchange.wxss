@@ -1,0 +1,291 @@
+/* pages/Vichy/newExchange/newExchange.wxss */
+page{
+  background-image: url('https://img.cdn.powerpower.net/5da811cde4b01043d7d7406b.png');
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+  display: table;
+  /* height: 100%; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; */
+}
+.activeLogo{
+  width: 210rpx;
+  height: 60rpx;
+  margin: 65rpx auto 20rpx;
+  display: block
+}
+.shopImg{
+  width: 416rpx;
+  height: 420rpx;
+  /* display: inline-block */
+}
+.exchangeBox{
+  width: 673rpx;
+  min-height: 684rpx;
+  margin: -84rpx auto 0;
+  position: relative;
+  /* padding: 0 90rpx; */
+  box-sizing: border-box;
+}
+.exchangeBox_bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+.invitedNum{
+  width: 162rpx;
+  height: 162rpx;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 5rpx 5rpx 5rpx #999;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -100rpx;
+  margin: 0 auto;
+  background: #fff;
+  font-size: 26rpx;
+  color: #222222;
+  padding: 10rpx 0;
+  box-sizing: border-box;
+}
+.num{
+  font-size: 75rpx;
+  color: #222222;
+  font-weight: bold
+}
+.invitedTip{
+   padding: 90rpx 60rpx 30rpx;
+   box-sizing: border-box;
+   position: absolute;
+   z-index: 10;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   top: 0;
+   margin: auto;
+}
+.invitedTip_title{
+  color: #366A7B;
+  font-size: 33rpx;
+  text-align: center;
+}
+.invitedTip_item{
+  color: #222222;
+  font-size: 28rpx;
+  /* padding-left: 75rpx; */
+  line-height: 60rpx;
+  text-align: center;
+}
+.invitedTip_item2{
+  text-align: center;
+  font-size: 30rpx;
+  padding-left: 0rpx;
+  margin-top: 20rpx;
+}
+.rewardNum{
+  font-size: 54rpx;
+  min-width: 66rpx;
+  display: inline-block;
+  text-align: center;
+  padding: 0 10rpx;
+}
+.rewardNum2{
+   display: inline;
+   font-size: 72rpx;
+}
+.reward{
+  font-weight: bold;
+  background: #C1520C;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 36rpx;
+}
+.reward_cont{
+  background: #fff;
+  padding: 0 10rpx;
+}
+.pasteKey{
+  color: #FF8400;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 50rpx;
+  text-decoration: underline;
+  margin-top: 30rpx;
+}
+.btn{
+   background-image: url('https://img.cdn.powerpower.net/5da81425e4b01043d7d74073.png?imageView/1/w/694/h/68');
+  background-size: 100% 100%;
+  width:694rpx;
+  /* background:rgba(54,100,123,1); */
+  border-radius:33rpx;
+  font-size:40rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  /* font-weight:500; */
+  color:rgba(255,255,255,1);
+  line-height:68rpx;
+  text-align: center;
+  margin: 0 auto 18rpx;
+}
+.activeRule{
+  text-align: center;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(17,62,96,1);
+  line-height:24rpx;
+  margin: 35rpx auto 4rpx;
+}
+.jjLogoBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40rpx;
+  /* position: absolute;
+  bottom: -40rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto; */
+}
+.line{
+  width: 103rpx;
+  height: 2rpx;
+  background: #fff;
+}
+.jjLogo{
+  width: 202rpx;
+  height: 46rpx;
+  text-align: center;
+  margin: 0 4rpx;
+}
+/* ___________________________分享转发 */
+.shareCont{
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+.shareFriend{
+  text-align: center;
+  position: relative;
+}
+.weixinLogo{
+  /* width: 65rpx;
+  height: 52rpx; */
+  font-size: 42rpx;
+  color: #72D225;
+  margin: 0 auto;
+}
+.share_Title{
+  font-size:28rpx;
+  font-family:PingFang-SC-Medium;
+  /* font-weight:500; */
+  color:rgba(51,51,51,1);
+  line-height:35rpx;
+}
+.savePost{
+  text-align: center
+}
+.savePostLogo{
+   /* width: 55rpx;
+  height: 51rpx; */
+  color: #7257FB;
+  font-size: 40rpx;
+  margin: 0 auto;
+}
+.shareFriendBtn{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  opacity: 0
+}
+.PostImgBox{
+  position: relative;
+  width: 550rpx;
+  height: 789rpx;
+}
+/* ---------------------------分享end */
+.checkReward{
+  /* padding: 0 28rpx;
+  box-sizing: border-box; */
+  width: 550rpx;
+  border-radius: 20rpx;
+}
+.checkReward_title{
+  font-size:34rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:rgba(20,20,20,1);
+  line-height:46rpx;
+  padding: 40rpx 100rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.checkRewardBox{
+  padding: 0 28rpx;
+  box-sizing: border-box;
+}
+.exchange_tip{
+  font-size:28rpx;
+  font-family:PingFangSC-Light,PingFangSC;
+  font-weight:300;
+  color:rgba(51,51,51,1);
+  line-height:34rpx;
+  text-align: left;
+  /* padding: 0 83rpx; */
+  margin-bottom: 18rpx;
+  display: flex;
+  /* align-items: center */
+}
+.exchangeIconTop{
+  align-self: flex-start;
+  flex-shrink: 0;
+  color:rgba(51,51,51,1);
+}
+.exchange_tipPlace{
+  color: #3C95FD;
+}
+.exchangeIcon{
+  color: #000000;
+  font-size:28rpx;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+  align-self: flex-start;
+  line-height: 28rpx;
+}
+.exchangeIconPlace{
+  color: #3C95FD;
+  font-size:24rpx;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+  align-self: flex-start;
+  line-height: 30rpx;
+  margin-left: -1rpx;
+}
+.exchange_tipTop{
+  color: #000000
+}
+.sureBtn{
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:80rpx;
+  text-align: center;
+  border-top: 1rpx solid #979797;
+  margin-top: 40rpx;
+}

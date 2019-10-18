@@ -4,4 +4,20 @@
    <view class="currentInvitation">目前累积邀请 
        <text class="currentInvitationNum">2</text> 人
    </view>
+   <!-- 扫完后 -->
+   <view class="convertibleBox">
+       <view class="convertible_title">可兑换</view>
+       <view class="convertible_cont" wx:for='{{3}}'>薇姿眼霜*3</view>
+       <view class="convertible_btn">确认兑换</view>
+   </view>
+
+   <!-- 扫前 -->
+   <!-- <view class="convertibleBox2">
+      请扫描用户二维码获得兑换信息
+   </view> -->
+
+   <view class="scanCode">
+       <text class="iconfont iconicon-test13 scanImg"></text>
+       <text class="scanCont">扫一扫</text>
+   </view>
 </view>

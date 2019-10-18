@@ -97,7 +97,7 @@ Page({
   },
   submit(){
     wx.navigateTo({
-      url: '/pages/Vichy/exchange/exchange',
+      url: '/pages/Vichy/newExchange/newExchange',
     })
   }
 })

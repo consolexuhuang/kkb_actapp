@@ -1,0 +1,10 @@
+<!--pages/Vichy/exchangeSuccess/exchangeSuccess.wxml-->
+<view class="around1"></view>
+<view class="around2"></view>
+<view class="around3"></view>
+<view class="around4"></view>
+<view class="around5"></view>
+<view class="around6"></view>
+
+<text class="exchangeSuccess">您已完成兑换</text>
+<image class="activeLogo" src="https://img.cdn.powerpower.net/5da9236fe4b0551951d0c100.png"></image>

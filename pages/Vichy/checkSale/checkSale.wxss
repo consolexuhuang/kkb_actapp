@@ -24,13 +24,85 @@ page{
   margin-top: -64rpx;
 }
 .currentInvitation{
-  font-size:42prx;
+  font-size:42rpx;
   font-family:PingFangSC-Light,PingFangSC;
-  font-weight:300;
+  font-weight:bold;
   color:rgba(20,20,20,1);
   line-height:68rpx;
   margin:30rpx auto 30rpx;
 }
 .currentInvitationNum{
   color:rgba(208,2,27,1);
+}
+.convertibleBox{
+  width: 500rpx;
+  min-height: 330rpx;
+  background:linear-gradient(180deg,rgba(245,251,255,1) 0%,rgba(251,252,254,1) 100%);
+  padding: 36rpx 30rpx;
+  box-sizing: border-box;
+  margin: 0 auto
+}
+.convertibleBox2{
+  width: 500rpx;
+  min-height: 330rpx;
+  background:linear-gradient(180deg,rgba(245,251,255,1) 0%,rgba(251,252,254,1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:30rpx;
+  font-family:PingFangSC-Light,PingFangSC;
+  font-weight:300;
+  color:rgba(20,20,20,1);
+  line-height:42rpx;
+  margin: 0 auto
+}
+.convertible_title{
+  font-size:34rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(20,20,20,1);
+  line-height:34rpx;
+  text-align: center;
+  margin-bottom: 22rpx;
+}
+.convertible_cont{
+  font-size:26rpx;
+  font-family:PingFangSC-Light,PingFangSC;
+  font-weight:300;
+  color:rgba(20,20,20,1);
+  line-height:37rpx;
+  text-align: center
+}
+.convertible_btn{
+  width: 100%;
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:80rpx;
+  text-align: center;
+  border:3rpx solid rgba(51,51,51,1);
+  background: #fff;
+  margin-top: 40rpx;
+}
+.scanCode{
+  width:510rpx;
+  height:80rpx;
+  background:rgba(255,255,255,1);
+  border:3rpx solid rgba(51,51,51,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 114rpx auto 120rpx
+}
+.scanImg{
+  font-size: 40rpx;
+  margin-right: 27rpx;
+}
+.scanCont{
+  font-size:30rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height:32rpx;
 }
