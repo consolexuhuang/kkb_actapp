@@ -61,6 +61,17 @@ page{
   color: #FF001F;
   margin-right: 4rpx;
 }
+.information_HasPhone{
+  /* border: 2rpx solid #333; */
+  text-align: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular,PingFangSC;
+  font-weight:400;
+  color:#000;
+  line-height:90rpx;
+}
 .information_phone{
   width: 320rpx;
   background:rgba(34,34,34,1);

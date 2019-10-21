@@ -1,48 +1,196 @@
 // pages/informationWord/informationWord.js
+const api = getApp().api;
+const store = getApp().store;
+var QQMapWX = require('../../../libs/qqmap-wx-jssdk.js');   // 引入腾讯地图SDK核心类
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    placeLoaction:['上海市','北京市'],
-    storeLoaction: ['中信泰富旗舰店','J&J X 锐樊健身授课中信泰富旗舰店馆（大宁国际店）','南京西路'],
-    date: '2019-10-01',
+    activeData:'',
+    locationData:'',
+    placeLoaction:[],
+    storeLoaction: [],
+    storeNameList:[],
+
     place_index:0,
     store_index: 0,
-    height:'',
-    allowMessgState: false
+    data_index:0,
+
+    allowMessgState: false,
+    code:'',//授权电话所需code
   },
-  // 动话函数
-  util: function () {
-    var animation = wx.createAnimation({
-      duration: 1000,  //动画时长
-      timingFunction: "ease-out", //线性
-      delay: 1000  //0则不延迟
-    });
-    // 第2步：这个动画实例赋给当前的动画实例
-    this.animation = animation;
-    animation.height().step();
-    // 第4步：导出动画对象赋给数据对象储存
-    this.setData({
-      animationData: animation.export()
+  // 获取福利信息
+  getActiveData() {
+    let data = {
+      latitude: getApp().globalData.location.latitude || '',
+      longitude: getApp().globalData.location.longitude || '',
+    }
+    api.post('v2/gift/getGiftReceiveConfig', data).then(res => {
+      console.log('福利内容', res)
+      let data_list = []
+      for (let i = 0; i < res.msg.data_list.length; i++) {
+        data_list.push(`${res.msg.data_list[i].date} 周${res.msg.data_list[i].day}`)
+      }
+      this.setData({
+        activeData: res.msg,
+        locationData: res.msg.city_store_map,
+        placeLoaction: Object.keys(res.msg.city_store_map),
+        storeLoaction: Object.values(res.msg.city_store_map)[0],
+        dataList: data_list
+      })
     })
-    // // 第5步：设置定时器到指定时候后，执行第二组动画
-    // setTimeout(function () {
-    //   // 执行第二组动画：Y轴不偏移，停
-    //   animation.translateY(0).step()
-    //   // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象
-    //   this.setData({
-    //     animationData: animation
-    //   })
-
-    // }.bind(this), 2000)
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  // 授权电话
+  getPhoneNumber(e){
+    let ency = e.detail.encryptedData;
+    let iv = e.detail.iv;
+    let errMsg = e.detail.errMsg
+    if (iv == null || ency == null) {
+      wx.showToast({
+        title: "授权失败,请重新授权！",
+        icon: 'none',
+      })
+      return false
+    } else {
+      let data = {
+        code: this.data.code,
+        encryptedData: ency,
+        iv: iv,
+        liteType: 'gift'
+      }
+      api.post('v2/member/liteMobile', data).then(res => {
+        console.log('后台电话解密授权', res)
+        this.getActiveData()
+      })
+    }
 
+  },
+  //地址逆解析
+  locationInverse(){
+    if (!store.getItem('address')) {
+      var that = this
+      let qqmapsdk = new QQMapWX({
+        key: 'UMNBZ-AMQK6-22HS4-EJUVQ-D24LE-BBBK3'
+      });
+      //根据经纬度获取所在城市
+      qqmapsdk.reverseGeocoder({
+        location: { latitude: getApp().globalData.location.latitude, longitude: getApp().globalData.location.longitude },
+        success: function (res) {
+          //address 城市
+          that.setData({ address: res.result.address_component.city })
+          store.setItem('address', res.result.address_component.city)
+          if (res.result.address_component.city !== '上海市') {
+            wx.showModal({
+              showCancel: false,
+              title: '提示',
+              content: '该活动仅限上海区域',
+            })
+          }
+        }
+      })
+    }
+  },
+  // 再次授权地理位置
+  again_getLocation() {
+    let that = this;
+    // 获取位置信息
+    wx.getSetting({
+      success: (res) => {
+        console.log(res)
+        if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {//非初始化进入该页面,且未授权
+          wx.showModal({
+            title: '是否授权当前位置',
+            content: '需要获取您的地理位置，请确认授权，否则无法获取您所需数据',
+            success: function (res) {
+              console.log(res)
+              if (res.cancel) {
+                that.setData({
+                  isshowCIty: false
+                })
+                wx.showToast({
+                  title: '授权失败',
+                  icon: 'none',
+                })
+              } else if (res.confirm) {
+                wx.openSetting({
+                  success: function (dataAu) {
+                    console.log(dataAu)
+                    if (dataAu.authSetting["scope.userLocation"] == true) {
+                      wx.showToast({
+                        title: '授权成功',
+                        icon: 'none',
+                      })
+                      //再次授权，调用getLocationt的API
+                      getApp().getLocation().then(() => {
+                        console.log('地理位置', getApp().globalData.location)
+                        that.locationInverse()
+                      }, () => {})
+                    } else {
+                      wx.showToast({
+                        title: '授权失败',
+                        icon: 'none',
+                      })
+                    }
+                  }
+                })
+              }
+            }
+          })
+        } else if (res.authSetting['scope.userLocation'] == undefined) {//初始化进入
+          getApp().getLocation().then(() => {
+            console.log('地理位置', getApp().globalData.location)
+            that.locationInverse()
+          }, () => {})
+        }
+        else { //授权后默认加载
+          getApp().getLocation().then(() => {
+            console.log('地理位置', getApp().globalData.location)
+            that.locationInverse()
+          }, () => {})
+        }
+      }
+    })
+  },
+  //领取
+  getReserveGiftReceive(){
+    return new Promise((resolve) => {
+      let data = {
+        latitude: getApp().globalData.location.latitude || '',
+        longitude: getApp().globalData.location.longitude || '',
+        storeId: this.data.storeLoaction[this.data.store_index].id || '',
+        reserveDate: this.data.activeData.data_list[this.data.data_index].date || '',
+        shareMemberId: this.data.shareMemberId || '',
+      }
+      api.post('v2/gift/reserveGiftReceive',data).then(res => {
+        resolve(res)
+      })
+    })
+  },
+  onLoad: function (options) {
+    if (options.shareMemberId) {
+      this.setData({
+        shareMemberId: options.shareMemberId
+      })
+    }
+    wx.login({
+      success: res_code => {
+        this.setData({ code: res_code.code })
+      }
+    })
+    if (!getApp().globalData.location){
+      getApp().getLocation().then(() => {
+        console.log('地理位置', getApp().globalData.location)
+        this.locationInverse()
+        this.getActiveData()
+      },()=>{
+        this.getActiveData()
+      })
+    } else {
+      this.getActiveData()
+    }
   },
 
   /**
@@ -58,30 +206,30 @@ Page({
   onShow: function () {
 
   },
-  //获取电话
-  getPhoneNumber(e){
-   console.log('授权电话',e)
-  },
   // 区域
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    // console.log('picker发送选择改变，携带值为', e.detail.value,)
     this.setData({
-      place_index: e.detail.value
+      place_index: e.detail.value,
+      storeLoaction: this.data.locationData[this.data.placeLoaction[e.detail.value]],
     })
+    console.log('地区-', this.data.placeLoaction[e.detail.value])
   },
   // 地点
   bindPickerChange_store(e){
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      store_index: e.detail.value
+      store_index: e.detail.value,
     })
-    this.util()
+    console.log('地点-', this.data.storeLoaction[e.detail.value].name)
   },
   //时间
   bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      date: e.detail.value
+      data_index: e.detail.value
     })
+    console.log('时间-', this.data.dataList[e.detail.value])
   },
   // 允许发送短信
   allowMessg(){
@@ -96,8 +244,34 @@ Page({
     })
   },
   submit(){
-    wx.navigateTo({
-      url: '/pages/Vichy/newExchange/newExchange',
-    })
+    if (!getApp().globalData.location){
+      this.again_getLocation()
+    } else if (store.getItem('address') !== '上海市') {
+      wx.showModal({
+        showCancel: false,
+        title: '提示',
+        content: '该活动仅限上海区域',
+      })
+    } else if (!this.data.activeData.cell_phone){
+      wx.showToast({
+        title: '您还未授权电话',
+        icon:'none'
+      })
+    } else {
+      this.getReserveGiftReceive().then(res_sub => {
+        console.log('reserveGiftReceive', res_sub)
+        if (res_sub.msg && res_sub.code === 0){
+          wx.redirectTo({
+            url: '/pages/Vichy/newExchange/newExchange',
+          })
+        } else {
+          wx.showToast({
+            title: res_sub.msg || '提交失败',
+            icon: 'none'
+          })
+        }
+      })
+      
+    }
   }
 })

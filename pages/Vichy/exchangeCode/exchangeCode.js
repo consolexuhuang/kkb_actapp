@@ -1,4 +1,4 @@
-// pages/Vichy/checkSale/checkSale.js
+// pages/Vichy/exchangeCode/exchangeCode.js
 Page({
 
   /**
@@ -28,5 +28,4 @@ Page({
   onShow: function () {
 
   },
-
 })

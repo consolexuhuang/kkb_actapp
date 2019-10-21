@@ -1,0 +1,23 @@
+<!--pages/Vichy/exchangeCode/exchangeCode.wxml-->
+<view class="checkSaleBox">
+   <image class="headImg" src="https://wx.qlogo.cn/mmopen/vi_32/RC66AgmvL5B7onSJJskOcg2hYHr8dd3fI2kPXg7r6EP5CcgOgqvvcd5XmK8u3nJxRNib9LK8vEt4GvMhiaojvtAA/132"></image>
+   <view class="currentInvitation">目前累积邀请 
+       <text class="currentInvitationNum">2</text> 人
+   </view>
+   <!-- 扫完后 -->
+   <view class="convertibleBox">
+       <view class="convertible_title">可兑换</view>
+       <view class="convertible_cont" wx:for='{{3}}'>薇姿眼霜*3</view>
+   </view>
+
+   <!-- 扫前 -->
+   <!-- <view class="convertibleBox2">
+      请扫描用户二维码获得兑换信息
+   </view> -->
+
+   <view class="codeBox">
+       <image class="codeImg" src="https://img.cdn.powerpower.net/5da3f1a4e4b0697c15ae69fd.png"></image>
+       <text class="scanCont">请向工作人员出示此二维码完成兑换
+</text>
+   </view>
+</view>

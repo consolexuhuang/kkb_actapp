@@ -12,6 +12,21 @@ page{
   justify-content: center;
   height: 100%; */
 }
+.navback{
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.navback text{
+  color: #000;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
 .activeLogo{
   width: 210rpx;
   height: 60rpx;

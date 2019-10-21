@@ -1,4 +1,6 @@
 // pages/Vichy/index/index.js
+const api = getApp().api;
+const store = getApp().store;
 Page({
 
   /**
@@ -19,14 +21,19 @@ Page({
     ],
     isXModel: getApp().globalData.isIpX, //是否是X系列机型
   },
-
+  // 校验提交记录
+  checkSubmit(){
+    api.post('v2/gift/getGiftReceiveInfo').then((res) => {
+      console.log('getGiftReceiveInfo',res)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // getApp().checkSessionFun().then(() => {
-
-    // })
+    getApp().checkSessionFun().then(() => {
+      this.checkSubmit()
+    })
   },
 
   /**

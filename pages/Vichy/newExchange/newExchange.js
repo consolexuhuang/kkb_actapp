@@ -9,7 +9,8 @@ Page({
     invitationPost: false,
     checkRewardBl: false,
     canvasObj: '',
-    MenuButtonTop:65 //rpx
+    MenuButtonTop:65, //rpx
+    MenuButtonHeight:0
   },
 
   /**
@@ -20,7 +21,8 @@ Page({
     console.log(wx.getMenuButtonBoundingClientRect())
     wx.getMenuButtonBoundingClientRect().top 
     ? this.setData({
-      MenuButtonTop: wx.getMenuButtonBoundingClientRect().top*2
+      MenuButtonTop: wx.getMenuButtonBoundingClientRect().top*2,
+      MenuButtonHeight: wx.getMenuButtonBoundingClientRect().height * 2,
     })
     : ''
   },
@@ -279,6 +281,12 @@ Page({
         //   }
         // })
       }
+    })
+  },
+  // 返回
+  navBack(){
+    wx.navigateBack({
+      delta:-1
     })
   }
 })

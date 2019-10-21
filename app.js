@@ -135,7 +135,8 @@ App({
             sourceData: _this.globalData.scene,
             shareChannel: shareMemberId,
           }
-          api.get('authorizationShare', data).then(res => {
+          // authorizationShare  authorizationLite  authorizationGift
+          api.get('authorizationGift', data).then(res => {
             if (res.msg) {
               if (res.code === -1) { //如果出现登录未知错误
                 setTimeout(() => {
@@ -192,7 +193,7 @@ App({
                 signature: res_userInfo.signature || ''
               }
               wx.showLoading({ title: '登录中...', })
-              api.get('authorizationShare', data).then(res => {
+              api.get('authorizationGift', data).then(res => {
                 wx.hideLoading()
                 if (res.msg) {
                   if (res.code === -1) { //如果出现登录未知错误
@@ -246,7 +247,30 @@ App({
     }
 
     return 0
-  }
+  },
+  getLocation: function () {
+    return new Promise((resolve, reject) => {
+      const location = this.globalData.location;
+      const _this = this
+      wx.getLocation({
+        type: 'wgs84',
+        success(res) {
+          _this.globalData.location = res;
+          resolve();
+        },
+        fail(err) {
+          reject();
+          // //默认值
+          // let location = {
+          //   latitude: '31.24916171',
+          //   longitude: '121.487899486'
+          // }
+          // _this.globalData.location = location;
+          // resolve();
+        }
+      })
+    });
+  },
   //修改用户信息接口
   // wx_modifyUserInfo() {
   //   wx.showLoading({ title: '加载中...',})

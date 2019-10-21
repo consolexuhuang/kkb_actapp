@@ -1,4 +1,7 @@
 <!--pages/Vichy/newExchange/newExchange.wxml-->
+<view class="navback" bindtap="navBack" style="height:{{MenuButtonHeight}}rpx; top:{{MenuButtonTop}}rpx; left:{{MenuButtonHeight/2}}rpx">
+   <text class="iconfont iconShape"></text>
+</view>
 <image class="activeLogo" src="https://img.cdn.powerpower.net/5da6b7b1e4b0ed26fbe0b4f1.png" style="margin-top: {{MenuButtonTop}}rpx"></image>
 <image class="shopImg" src="https://img.cdn.powerpower.net/5da81414e4b01043d7d74071.png?imageView/1/w/350/h/354"></image>
 
