@@ -62,28 +62,6 @@ Page({
       checkRewardBl: true
     })
   },
-  //更新用户信息
-  // bindgetuserinfo(e) {
-  //   wx.getUserInfo({
-  //     lang: 'zh_CN',
-  //     success: res => {
-  //       console.log('用户授权信息', res.userInfo)
-  //       store.setItem('wx_userInfo', res.userInfo)
-  //       this.getGiftReceiveInfo().then(() => {
-  //         this.getAvaterInfo()
-  //         // this.setData({
-  //         //   invitationFriendEnter: true, invitationPost: true 
-  //         // })
-  //         // this.sharePosteCanvas(this.data.canvasObj)//初始化画布
-  //       })
-  //       getApp().wx_modifyUserInfo(); //后台更新头像
-  //     },
-  //     fail: () => {
-  //       this.setData({ invitationFriendEnter: true, invitationPost: true });
-  //       this.sharePosteCanvas(this.data.canvasObj) //初始化画布
-  //     }
-  //   })
-  // },
   // 邀请入口
   invitationFriend() {
     if (this.data.canvasObj) {

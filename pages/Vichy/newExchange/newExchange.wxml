@@ -25,9 +25,6 @@
    </view>
 </view>
 
-<!-- <view class="invitedBtn btn" wx:if='{{giftReceiveInfo &&!giftReceiveInfo.head_img}}'>邀请好友
-   <button open-type='getUserInfo' bindgetuserinfo = 'bindgetuserinfo' class='getUserInfoBtn'></button>
-</view> -->
 <view class="invitedBtn btn" bindtap="invitationFriend">邀请好友</view>
 <view class="exchangeBtn btn" bindtap="checkReward">兑换奖品</view>
 
