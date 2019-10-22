@@ -62,6 +62,28 @@ Page({
       checkRewardBl: true
     })
   },
+  //更新用户信息
+  // bindgetuserinfo(e) {
+  //   wx.getUserInfo({
+  //     lang: 'zh_CN',
+  //     success: res => {
+  //       console.log('用户授权信息', res.userInfo)
+  //       store.setItem('wx_userInfo', res.userInfo)
+  //       this.getGiftReceiveInfo().then(() => {
+  //         this.getAvaterInfo()
+  //         // this.setData({
+  //         //   invitationFriendEnter: true, invitationPost: true 
+  //         // })
+  //         // this.sharePosteCanvas(this.data.canvasObj)//初始化画布
+  //       })
+  //       getApp().wx_modifyUserInfo(); //后台更新头像
+  //     },
+  //     fail: () => {
+  //       this.setData({ invitationFriendEnter: true, invitationPost: true });
+  //       this.sharePosteCanvas(this.data.canvasObj) //初始化画布
+  //     }
+  //   })
+  // },
   // 邀请入口
   invitationFriend() {
     if (this.data.canvasObj) {
@@ -115,32 +137,37 @@ Page({
   getQrCode: function (avaterSrc) {
     // wx.showLoading({ title: '生成中...', mask: true, });
     var that = this;
-    wx.downloadFile({
-      url: that.data.giftReceiveInfo.qr_url, //二维码路径
-      success: function (res) {
-        // wx.hideLoading();
-        if (res.statusCode === 200) {
-          var codeSrc = res.tempFilePath;
-          that.getHeadeImg(avaterSrc, codeSrc)
-        } else {
-          wx.showToast({
-            title: '二维码下载失败！',
-            icon: 'none',
-            duration: 2000,
-            success: function () {
-              var codeSrc = "";
-              that.getHeadeImg(avaterSrc, codeSrc)
-            }
-          })
+    if (that.data.giftReceiveInfo.qr_url){
+      wx.downloadFile({
+        url: that.data.giftReceiveInfo.qr_url || '', //二维码路径
+        success: function (res) {
+          // wx.hideLoading();
+          if (res.statusCode === 200) {
+            var codeSrc = res.tempFilePath;
+            that.getHeadeImg(avaterSrc, codeSrc)
+          } else {
+            wx.showToast({
+              title: '二维码下载失败！',
+              icon: 'none',
+              duration: 2000,
+              success: function () {
+                var codeSrc = "";
+                that.getHeadeImg(avaterSrc, codeSrc)
+              }
+            })
+          }
         }
-      }
-    })
+      })
+    } else {
+      var codeSrc = "";
+      that.getHeadeImg(avaterSrc, codeSrc)
+    }
   },
   //下载头像
   getHeadeImg(avaterSrc, codeSrc) {
     var that = this;
     wx.downloadFile({
-      url: that.data.giftReceiveInfo.head_img, //头像路径
+      url: that.data.giftReceiveInfo.head_img ||'https://img.cdn.powerpower.net/5daed485e4b071388713f92d.png', //头像路径
       success: function (res) {
         wx.hideLoading();
         if (res.statusCode === 200) {
@@ -151,14 +178,13 @@ Page({
             headImg: headImg
           }
           that.setData({ canvasObj: obj })
-          // that.sharePosteCanvas(avaterSrc, codeSrc, headImg);
         } else {
           var headImg = "";
           that.setData({ canvasObj: obj })
-          // that.sharePosteCanvas(avaterSrc, codeSrc, headImg);
         }
       }
     })
+  
   },
   /**
    * 开始用canvas绘制分享海报
@@ -190,14 +216,16 @@ Page({
       ctx.setFontSize(height / 28.2);
       ctx.setFillStyle('#000');
       let textLineHeight = height / 56
+      //昵称
       if (that.data.giftReceiveInfo.nick_name){
         var userNameLengthHalf = ctx.measureText(that.data.giftReceiveInfo.nick_name).width / 2
         ctx.fillText(that.data.giftReceiveInfo.nick_name, width / 2 - userNameLengthHalf, height / 3.04 + height / 28.2);
       }
-        var activeoOneLengthHalf = ctx.measureText("送你一个薇姿限量礼包").width / 2
-        var activeoTwoLengthHalf = ctx.measureText("赶快长按识别小程序领取吧").width / 2
-      ctx.fillText("送你一个薇姿限量礼包", width / 2 - activeoOneLengthHalf, height / 3.04 + height / 28.2 * 2 + textLineHeight);
-      ctx.fillText("赶快长按识别小程序领取吧", width / 2 - activeoTwoLengthHalf, height / 3.04 + height / 28.2 * 3 + textLineHeight * 2);
+
+      var activeoOneLengthHalf = ctx.measureText("送你一个薇姿限量礼包").width / 2
+      var activeoTwoLengthHalf = ctx.measureText("赶快长按识别小程序领取吧").width / 2
+    ctx.fillText("送你一个薇姿限量礼包", width / 2 - activeoOneLengthHalf, height / 3.04 + height / 28.2 * 2 + textLineHeight);
+    ctx.fillText("赶快长按识别小程序领取吧", width / 2 - activeoTwoLengthHalf, height / 3.04 + height / 28.2 * 3 + textLineHeight * 2);
       //  绘制二维码
       if (canvasObj.codeSrc) {
         // 系数width = 550/264 = 2.08

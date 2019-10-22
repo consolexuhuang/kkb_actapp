@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    activeData:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let prevPage = getCurrentPages()[getCurrentPages().length - 2]
+    // console.log(prevPage)
+    this.setData({
+      activeData: prevPage.data.activeData
+    })
   },
 
   /**

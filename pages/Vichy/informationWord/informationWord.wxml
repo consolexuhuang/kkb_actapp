@@ -25,7 +25,7 @@
    </view>
    <view class="store_tip">
       <text class="icondingwei iconfont icon"></text>
-      <text class="storeDetail">{{storeLoaction[store_index].address}}（距您13km）</text>
+      <text class="storeDetail">{{storeLoaction[store_index].address}} <text wx:if='{{storeLoaction[store_index].DIST}}'>（距您{{storeLoaction[store_index].DIST/1000}}km）</text></text>
    </view>
 
    <text class="information_title">确认领取日期</text>
@@ -46,7 +46,7 @@
           </view>
           <view class="information_ruleBox" bindtap="allowMessg">
               <text class="{{allowMessgState ? 'iconfuxuankuang_xuanzhongcopy' : 'iconfuxuankuang_xuanzhong'}} iconfont icon2"></text>
-              <view class="information_ruleText">我不同意薇姿及所在欧莱雅中国集团向其发送邮件、彩 信或致电。
+              <view class="information_ruleText">我不同意薇姿及所在欧莱雅中国集团向其发送邮件、彩信或致电。
               </view>
           </view>
       </view>

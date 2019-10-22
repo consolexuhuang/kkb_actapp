@@ -22,14 +22,14 @@ Page({
     allowMessgState: false,
     code:'',//授权电话所需code
   },
-  // 获取福利信息
+  // 获取福利信息（带经纬度）
   getActiveData() {
     let data = {
       latitude: getApp().globalData.location.latitude || '',
       longitude: getApp().globalData.location.longitude || '',
     }
     api.post('v2/gift/getGiftReceiveConfig', data).then(res => {
-      console.log('福利内容', res)
+      console.log('福利信息内容', res)
       let data_list = []
       for (let i = 0; i < res.msg.data_list.length; i++) {
         data_list.push(`${res.msg.data_list[i].date} 周${res.msg.data_list[i].day}`)
@@ -71,13 +71,17 @@ Page({
   //地址逆解析
   locationInverse(){
     if (!store.getItem('address')) {
+      // 本地无地址 腾讯解析
       var that = this
       let qqmapsdk = new QQMapWX({
         key: 'UMNBZ-AMQK6-22HS4-EJUVQ-D24LE-BBBK3'
       });
       //根据经纬度获取所在城市
       qqmapsdk.reverseGeocoder({
-        location: { latitude: getApp().globalData.location.latitude, longitude: getApp().globalData.location.longitude },
+        location: { 
+          latitude: getApp().globalData.location.latitude, 
+          longitude: getApp().globalData.location.longitude 
+        },
         success: function (res) {
           //address 城市
           that.setData({ address: res.result.address_component.city })
@@ -91,6 +95,8 @@ Page({
           }
         }
       })
+    } else {
+      console.log('无需再次逆解析')
     }
   },
   // 再次授权地理位置
@@ -256,7 +262,7 @@ Page({
       })
     } else {
       this.getReserveGiftReceive().then(res_sub => {
-        console.log('reserveGiftReceive', res_sub)
+        console.log('reserveGiftReceive提交', res_sub)
         if (res_sub.msg && res_sub.code === 0){
           wx.redirectTo({
             url: '/pages/Vichy/newExchange/newExchange',

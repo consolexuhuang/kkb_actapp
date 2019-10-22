@@ -25,6 +25,9 @@
    </view>
 </view>
 
+<!-- <view class="invitedBtn btn" wx:if='{{giftReceiveInfo &&!giftReceiveInfo.head_img}}'>邀请好友
+   <button open-type='getUserInfo' bindgetuserinfo = 'bindgetuserinfo' class='getUserInfoBtn'></button>
+</view> -->
 <view class="invitedBtn btn" bindtap="invitationFriend">邀请好友</view>
 <view class="exchangeBtn btn" bindtap="checkReward">兑换奖品</view>
 
@@ -44,12 +47,12 @@
            custom-style='border-top-left-radius:18rpx;border-top-right-radius:18rpx'>
     <view class='shareCont'>
        <view class='savePost' bindtap='savePostLocation'>
-         <text class='savePostLogo iconfenzu1 iconfont' src='{{ossUrl}}sharePost.png'></text>
-         <view class='share_Title'>保存卡片</view>
+         <image class='savePostLogo' src="../../../images/vichy/pengyouquan.png"></image>
+         <view class='share_Title'>分享到朋友圈</view>
        </view>
        <view class='shareFriend'>
          <button class='shareFriendBtn' open-type="share"></button>
-         <text class='weixinLogo iconfenzucopy iconfont' src='{{ossUrl}}weixinLogo.png'></text>
+         <text class='weixinLogo iconfenzucopy iconfont'></text>
          <view class='share_Title'>发送好友</view>
        </view>
     </view>
@@ -87,7 +90,7 @@
             <text class="exchangeIconTop">
                 <text class="iconfont icondingwei exchangeIcon"></text>兑换地址：
             </text>
-            <text>上海市黄浦区南京南京西路1391号南京西路139号西路39号</text>
+            <text>{{giftReceiveInfo.store_address}}</text>
         </view>
      </view>
      <view class="sureBtn" bindtap="sureCheckStore">确认</view>

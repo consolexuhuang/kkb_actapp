@@ -23,6 +23,7 @@ Page({
     isApplyBl: false, //是否申请
     isShowApplyBtn: false, //是否开出领取嗯妞
     jurisdictionSmallState: false,
+    userInfoState: false,
   },
   // 校验提交记录
   checkSubmit(){
@@ -32,14 +33,45 @@ Page({
         console.log('getGiftReceiveInfo',res)
         wx.hideLoading()
         resolve(res)
-        // if(!res.msg){
-        //   this.setData({ isApplyBl: false})
-        // } else {
-        //   this.setData({ isApplyBl: true })
-        // }
       })
     })
   },
+  // // 用户授权状态
+  // userAuthState(){
+  //   return new Promise(resolve => {
+  //       if (store.getItem('userData') && !store.getItem('userData').head_img && !store.getItem('userData').nick_name) {
+  //         this.setData({ userInfoState: false})
+  //         resolve()
+  //       } else if (store.getItem('userData') && store.getItem('userData').head_img && store.getItem('userData').nick_name){
+  //         this.setData({ userInfoState: true })
+  //         resolve()
+  //       } else {
+  //         resolve()
+  //       }
+  //   })
+  // },
+  //用户信息状态
+  userActiveState(){
+    if (getApp().passIsLogin()) {
+      this.checkSubmit().then((check_res) => {
+        if (check_res.msg) {
+          store.setItem('giftReceive', check_res.msg)
+          wx.navigateTo({
+            url: '/pages/Vichy/newExchange/newExchange',
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/Vichy/informationWord/informationWord',
+          })
+        }
+      })
+    } else {
+      this.setData({
+        jurisdictionSmallState: true,
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -48,7 +80,9 @@ Page({
       store.setItem('shareMemberId', options.shareMemberId)
     }
     getApp().checkSessionFun().then(() => {
-      this.setData({ isShowApplyBtn: true})
+        this.setData({ isShowApplyBtn: true})
+      // this.userAuthState().then(() => {
+      // })
     })
   },
 
@@ -76,29 +110,37 @@ Page({
   // 下一张
   nextBanner(e){
     this.setData({
-      currentIndex: e.currentTarget.dataset.index+1
+      currentIndex: this.data.currentIndex+1
     })
     // console.log(e.currentTarget.dataset.index, this.data.currentIndex)
   },
-  // 免费领取
-  jumpToFreeReceive(){
-    if (getApp().passIsLogin()){
-      this.checkSubmit().then((check_res) =>{
-        if (check_res.msg){
-          store.setItem('giftReceive', check_res.msg)
-          wx.navigateTo({
-            url: '/pages/Vichy/newExchange/newExchange',
-          })
+  swiperbindchange(e){
+    // console.log(e.detail.current)
+    this.setData({
+      currentIndex: e.detail.current
+    })
+  },
+  updateUserReceive(){
+    wx.getUserInfo({
+      lang: 'zh_CN',
+      success: res => {
+        console.log('用户授权信息', res.userInfo)
+        if ((res.userInfo.nickName != store.getItem('userData').nick_name) || (res.userInfo.avatarUrl != store.getItem('userData').head_img)){
+          store.setItem('wx_userInfo', res.userInfo)
+          getApp().wx_modifyUserInfo().then(() => {
+            this.userActiveState()
+          }); //后台更新头像
         } else {
-          wx.navigateTo({
-            url: '/pages/Vichy/informationWord/informationWord',
-          })
+            this.userActiveState()
         }
-      })
-    } else {
-      this.setData({
-        jurisdictionSmallState: true,
-      })
-    }
-  }
+      },
+      fail: () => {
+        this.userActiveState()
+      }
+    })
+  },
+  // 免费领取
+  // jumpToFreeReceive(){
+  //   this.userActiveState()
+  // }
 })

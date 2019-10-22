@@ -1,18 +1,36 @@
 // pages/Vichy/exchangeCode/exchangeCode.js
+const api = getApp().api;
+const store = getApp().store;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    giftReceiveInfo: '',
+    isSureReceiveInfoComplate: false,
   },
-
+  // 校验提交记录
+  checkSubmit() {
+    wx.showLoading({ title: '加载中...',})
+    api.post('v2/gift/getGiftReceiveInfo').then((res) => {
+      wx.hideLoading()
+      console.log('getGiftReceiveInfo', res)
+      this.setData({
+        isSureReceiveInfoComplate: true,
+        giftReceiveInfo: res.msg
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getApp().checkSessionFun().then(() => {
+      if (getApp().passIsLogin()){
+        this.checkSubmit()
+      }
+    })
   },
 
   /**
@@ -27,5 +45,10 @@ Page({
    */
   onShow: function () {
 
+  },
+  backHome(){
+    wx.redirectTo({
+      url: '/pages/Vichy/index/index',
+    })
   },
 })

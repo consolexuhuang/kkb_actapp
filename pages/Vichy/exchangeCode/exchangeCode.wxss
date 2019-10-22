@@ -15,7 +15,8 @@ page{
   text-align: center;
   padding-bottom: 46rpx;
   box-sizing: border-box;
-  margin: 100rpx auto 45rpx
+  margin: 100rpx auto 45rpx;
+  display: table;
 }
 .headImg{
   width: 128rpx;
@@ -90,4 +91,14 @@ page{
   font-weight:500;
   color:rgba(51,51,51,1);
   line-height:28rpx;
+}
+.backHome{
+  border: 2rpx solid #000;
+  text-align: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-size:28rpx;
+  font-family:PingFangSC-Medium,PingFangSC;
+  line-height:80rpx;
+  margin-top: 90rpx;
 }

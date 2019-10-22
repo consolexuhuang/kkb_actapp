@@ -1,16 +1,22 @@
 <!--pages/Vichy/index/index.wxml-->
-<swiper vertical='true' current='{{currentIndex}}' easing-function='default'>
+<swiper vertical='true' current='{{currentIndex}}' easing-function='default' bindchange='swiperbindchange'>
   <swiper-item class="item" wx:for='{{isXModel ? index_banner_X : index_banner}}' wx:key='index'>
     <image src="{{item}}"  class="bannerImg" lazy-load='true'/>
-    <view class="btnBox" wx:if='{{isShowApplyBtn}}'>
-       <view class="btn" bindtap="jumpToFreeReceive" style="margin-bottom:{{index === index_banner.length-1 ? '50rpx' : 0}}">免费申领</view>
-       <view class="chevronBox" wx:if='{{index !== index_banner.length-1}}' bindtap="nextBanner" data-index="{{index}}">
-          <div class="chevron"></div>
-          <div class="chevron"></div>
-          <div class="chevron"></div>
-       </view>
-    </view>
   </swiper-item>
 </swiper>
+<view class="btnBox animated fadeIn" wx:if='{{isShowApplyBtn}}'>
+    <!-- <view class="btn" bindtap="jumpToFreeReceive" wx:if='{{userInfoState}}' style="margin-bottom:{{currentIndex === index_banner.length-1 ? '50rpx' : 0}}">免费申领</view> -->
+    
+    <view class="btn" style="margin-bottom:{{currentIndex === index_banner.length-1 ? '50rpx' : 0}}">免费申领
+       <button open-type='getUserInfo' bindgetuserinfo = 'updateUserReceive' class='getUserInfoBtn'></button>
+       <!-- <button open-type='getUserInfo' bindgetuserinfo = 'updateUserReceive' class='getUserInfoBtn'></button> -->
+    </view>
+
+    <view class="chevronBox" wx:if='{{currentIndex !== index_banner.length-1}}' bindtap="nextBanner">
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+    </view>
+</view>
 
 <jurisdictionSmallPopup state='{{jurisdictionSmallState}}' bindmyevent='bindgetuserinfo'></jurisdictionSmallPopup>

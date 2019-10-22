@@ -151,7 +151,16 @@ page{
   line-height:68rpx;
   text-align: center;
   margin: 0 auto 18rpx;
+  position: relative;
 }
+/* .getUserInfoBtn{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+} */
 .activeRule{
   text-align: center;
   font-size:24rpx;
@@ -192,6 +201,9 @@ page{
 .shareFriend{
   text-align: center;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .weixinLogo{
   /* width: 65rpx;
@@ -205,16 +217,17 @@ page{
   font-family:PingFang-SC-Medium;
   /* font-weight:500; */
   color:rgba(51,51,51,1);
-  line-height:35rpx;
+  line-height:50rpx;
 }
 .savePost{
-  text-align: center
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .savePostLogo{
-   /* width: 55rpx;
-  height: 51rpx; */
-  color: #7257FB;
-  font-size: 40rpx;
+  width: 42rpx;
+  height: 42rpx;
   margin: 0 auto;
 }
 .shareFriendBtn{
