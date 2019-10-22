@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "首页",
   "navigationBarTextStyle": "black",
-  "usingComponents": {}
+  "usingComponents": {
+    "jurisdictionSmallPopup": "/components/jurisdictionSmallPopup/jurisdictionSmallPopup"
+  }
 }

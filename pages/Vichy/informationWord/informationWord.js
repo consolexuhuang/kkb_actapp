@@ -156,25 +156,22 @@ Page({
   },
   //领取
   getReserveGiftReceive(){
+    wx.showLoading({title: '提交中...' })
     return new Promise((resolve) => {
       let data = {
         latitude: getApp().globalData.location.latitude || '',
         longitude: getApp().globalData.location.longitude || '',
         storeId: this.data.storeLoaction[this.data.store_index].id || '',
         reserveDate: this.data.activeData.data_list[this.data.data_index].date || '',
-        shareMemberId: this.data.shareMemberId || '',
+        shareMemberId: store.getItem('shareMemberId') || '',
       }
       api.post('v2/gift/reserveGiftReceive',data).then(res => {
+        wx.hideLoading()
         resolve(res)
       })
     })
   },
   onLoad: function (options) {
-    if (options.shareMemberId) {
-      this.setData({
-        shareMemberId: options.shareMemberId
-      })
-    }
     wx.login({
       success: res_code => {
         this.setData({ code: res_code.code })

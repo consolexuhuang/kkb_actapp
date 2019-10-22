@@ -1,4 +1,6 @@
 // pages/Vichy/newExchange/newExchange.js
+const api = getApp().api;
+const store = getApp().store;
 Page({
 
   /**
@@ -10,14 +12,30 @@ Page({
     checkRewardBl: false,
     canvasObj: '',
     MenuButtonTop:65, //rpx
-    MenuButtonHeight:0
+    MenuButtonHeight:0,
+    giftReceiveInfo:'', //提交信息
   },
-
+  // 提交信息
+  getGiftReceiveInfo() {
+    return new Promise(resolve => {
+      if (store.getItem('giftReceive')){
+        this.setData({ giftReceiveInfo: store.getItem('giftReceive')})
+        resolve()
+      } else {
+        api.post('v2/gift/getGiftReceiveInfo').then((res) => {
+          resolve()
+          if (res.msg) this.setData({ giftReceiveInfo: res.msg })
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getAvaterInfo()
+    this.getGiftReceiveInfo().then(() => {
+       this.getAvaterInfo()
+    })
     console.log(wx.getMenuButtonBoundingClientRect())
     wx.getMenuButtonBoundingClientRect().top 
     ? this.setData({
@@ -26,12 +44,11 @@ Page({
     })
     : ''
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
+  onHide(){
+    store.clear('giftReceive')
+  },
+  onUnload(){
+    store.clear('giftReceive')
   },
 
   /**
@@ -99,7 +116,7 @@ Page({
     // wx.showLoading({ title: '生成中...', mask: true, });
     var that = this;
     wx.downloadFile({
-      url: 'https://img.cdn.powerpower.net/5da3f1a4e4b0697c15ae69fd.png', //二维码路径
+      url: that.data.giftReceiveInfo.qr_url, //二维码路径
       success: function (res) {
         // wx.hideLoading();
         if (res.statusCode === 200) {
@@ -123,7 +140,7 @@ Page({
   getHeadeImg(avaterSrc, codeSrc) {
     var that = this;
     wx.downloadFile({
-      url: "https://wx.qlogo.cn/mmopen/vi_32/RC66AgmvL5B7onSJJskOcg2hYHr8dd3fI2kPXg7r6EP5CcgOgqvvcd5XmK8u3nJxRNib9LK8vEt4GvMhiaojvtAA/132", //头像路径
+      url: that.data.giftReceiveInfo.head_img, //头像路径
       success: function (res) {
         wx.hideLoading();
         if (res.statusCode === 200) {
@@ -173,10 +190,12 @@ Page({
       ctx.setFontSize(height / 28.2);
       ctx.setFillStyle('#000');
       let textLineHeight = height / 56
-      let userNameLengthHalf = ctx.measureText("🍑Laughing_ZZ🐳").width / 2
-      let activeoOneLengthHalf = ctx.measureText("送你一个薇姿限量礼包").width / 2
-      let activeoTwoLengthHalf = ctx.measureText("赶快长按识别小程序领取吧").width / 2
-      ctx.fillText("🍑Laughing_ZZ🐳", width / 2 - userNameLengthHalf, height / 3.04 + height / 28.2);
+      if (that.data.giftReceiveInfo.nick_name){
+        var userNameLengthHalf = ctx.measureText(that.data.giftReceiveInfo.nick_name).width / 2
+        ctx.fillText(that.data.giftReceiveInfo.nick_name, width / 2 - userNameLengthHalf, height / 3.04 + height / 28.2);
+      }
+        var activeoOneLengthHalf = ctx.measureText("送你一个薇姿限量礼包").width / 2
+        var activeoTwoLengthHalf = ctx.measureText("赶快长按识别小程序领取吧").width / 2
       ctx.fillText("送你一个薇姿限量礼包", width / 2 - activeoOneLengthHalf, height / 3.04 + height / 28.2 * 2 + textLineHeight);
       ctx.fillText("赶快长按识别小程序领取吧", width / 2 - activeoTwoLengthHalf, height / 3.04 + height / 28.2 * 3 + textLineHeight * 2);
       //  绘制二维码
@@ -288,5 +307,11 @@ Page({
     wx.navigateBack({
       delta:-1
     })
+  },
+  onShareAppMessage(){
+    return {
+      title: "",
+      path: `/pages/index/index?shareMemberId=${store.getItem('shareMemberId')}`,
+    }
   }
 })

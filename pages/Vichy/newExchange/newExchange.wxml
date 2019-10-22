@@ -6,7 +6,7 @@
 <image class="shopImg" src="https://img.cdn.powerpower.net/5da81414e4b01043d7d74071.png?imageView/1/w/350/h/354"></image>
 
 <view class="exchangeBox">
-   <view class="invitedNum"><text class="num">233\n</text>个好友</view>
+   <view class="invitedNum"><text class="num">{{giftReceiveInfo.share_member_count}}\n</text>个好友</view>
    <image class="exchangeBox_bg" src="https://img.cdn.powerpower.net/5da8141ce4b01043d7d74072.png?imageView/1/w/673/h/684"></image>
    <view class="invitedTip">
        <view class="invitedTip_title">目前累计助力</view>
@@ -75,13 +75,13 @@
             <text class="exchangeIconTop">
               <text class="iconfont iconshijian exchangeIcon"></text>兑换时间：
             </text>
-            <text>2019-10-11 周五</text>
+            <text>{{giftReceiveInfo.reserve_date}} 周{{giftReceiveInfo.reserve_day}}</text>
         </view>
         <view class="exchange_tip">
             <text class="exchangeIconTop">
-              <text class="iconfont iconmendian exchangeIcon"></text>兑换地址：
+              <text class="iconfont iconmendian exchangeIcon"></text>兑换门店：
             </text>
-            <text>中信富旗舰店</text>
+            <text>{{giftReceiveInfo.store_name}}</text>
         </view>
         <view class="exchange_tip exchange_tipPlace">
             <text class="exchangeIconTop">

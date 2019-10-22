@@ -20,19 +20,35 @@ Page({
       'https://img.cdn.powerpower.net/5da1728ce4b0697c15ae69b3.png'
     ],
     isXModel: getApp().globalData.isIpX, //是否是X系列机型
+    isApplyBl: false, //是否申请
+    isShowApplyBtn: false, //是否开出领取嗯妞
+    jurisdictionSmallState: false,
   },
   // 校验提交记录
   checkSubmit(){
-    api.post('v2/gift/getGiftReceiveInfo').then((res) => {
-      console.log('getGiftReceiveInfo',res)
+    return new Promise(resolve => {
+      wx.showLoading({ title: '加载中...',})
+      api.post('v2/gift/getGiftReceiveInfo').then((res) => {
+        console.log('getGiftReceiveInfo',res)
+        wx.hideLoading()
+        resolve(res)
+        // if(!res.msg){
+        //   this.setData({ isApplyBl: false})
+        // } else {
+        //   this.setData({ isApplyBl: true })
+        // }
+      })
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.shareMemberId) {
+      store.setItem('shareMemberId', options.shareMemberId)
+    }
     getApp().checkSessionFun().then(() => {
-      this.checkSubmit()
+      this.setData({ isShowApplyBtn: true})
     })
   },
 
@@ -49,6 +65,14 @@ Page({
   onShow: function () {
 
   },
+  // 点击授权
+  bindgetuserinfo() {
+    getApp().wx_AuthUserLogin().then(() => {
+      this.setData({
+        jurisdictionSmallState: false,
+      })
+    })
+  },
   // 下一张
   nextBanner(e){
     this.setData({
@@ -58,8 +82,23 @@ Page({
   },
   // 免费领取
   jumpToFreeReceive(){
-     wx.navigateTo({
-       url: '/pages/Vichy/informationWord/informationWord',
-     })
+    if (getApp().passIsLogin()){
+      this.checkSubmit().then((check_res) =>{
+        if (check_res.msg){
+          store.setItem('giftReceive', check_res.msg)
+          wx.navigateTo({
+            url: '/pages/Vichy/newExchange/newExchange',
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/Vichy/informationWord/informationWord',
+          })
+        }
+      })
+    } else {
+      this.setData({
+        jurisdictionSmallState: true,
+      })
+    }
   }
 })
