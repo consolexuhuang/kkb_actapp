@@ -9,7 +9,7 @@
    <view class="invitedNum"><text class="num">{{giftReceiveInfo.share_member_count}}\n</text>个好友</view>
    <image class="exchangeBox_bg" src="https://img.cdn.powerpower.net/5da8141ce4b01043d7d74072.png?imageView/1/w/673/h/684"></image>
    <view class="invitedTip">
-       <view class="invitedTip_title">目前累计助力</view>
+       <view class="invitedTip_title">目前已成功申领</view>
        <view class="invitedTip_item invitedTip_item2">邀请<text class="rewardNum rewardNum2">6</text>个好友申领
           <view style="text-align: center">
              <text class="reward">获额外1份薇姿限量礼包</text>
@@ -28,7 +28,7 @@
 <view class="invitedBtn btn" bindtap="invitationFriend">邀请好友</view>
 <view class="exchangeBtn btn" bindtap="checkReward">兑换奖品</view>
 
-<view class="activeRule">活动&邀请规则</view>
+<view class="activeRule" bindtap="jumpExchangeRule">活动&邀请规则</view>
 
 <view class="jjLogoBox">
    <text class="line"></text>
@@ -59,7 +59,7 @@
            overlay='{{false}}'
            safe-area-inset-bottom 
            custom-style='margin-top:-50rpx'>
-    <view class='PostImgBox'>
+    <view class='PostImgBox' catchtouchmove="catchtouchmove">
       <view class='poste_box' id='canvas-container' style='width:100%;height:100%;'>
         <canvas canvas-id="myCanvas" style="width:100%;height:100%; display:{{invitationPost ? 'block' : 'none'}}" />
       </view>
@@ -87,7 +87,7 @@
             <text class="exchangeIconTop">
                 <text class="iconfont icondingwei exchangeIcon"></text>兑换地址：
             </text>
-            <text>{{giftReceiveInfo.store_address}}</text>
+            <text bindtap="getLocationMap">{{giftReceiveInfo.store_address}}</text>
         </view>
      </view>
      <view class="sureBtn" bindtap="sureCheckStore">确认</view>

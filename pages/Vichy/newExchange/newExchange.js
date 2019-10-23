@@ -1,6 +1,7 @@
 // pages/Vichy/newExchange/newExchange.js
 const api = getApp().api;
 const store = getApp().store;
+const util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -14,7 +15,9 @@ Page({
     MenuButtonTop:65, //rpx
     MenuButtonHeight:0,
     giftReceiveInfo:'', //提交信息
+    invitedcodeUrl:'', //邀请人二维码
   },
+  
   // 提交信息
   getGiftReceiveInfo() {
     return new Promise(resolve => {
@@ -29,12 +32,26 @@ Page({
       }
     })
   },
+  //配置邀请二维码
+  getCodeConfig(){
+    return new Promise(resolve => {
+      let data = {
+        memberId: store.getItem('userData').id,
+        liteType: 'gift'
+      }
+      console.log(util.formatUrlParams(`${getApp().globalData.API_URI}getLiteQrcode`, data))
+      this.setData({
+        invitedcodeUrl: util.formatUrlParams(`${getApp().globalData.API_URI}getLiteQrcode`, data)
+      })
+      resolve()
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getGiftReceiveInfo().then(() => {
-       this.getAvaterInfo()
+    Promise.all([this.getGiftReceiveInfo(), this.getCodeConfig()]).then(() => {
+      this.getAvaterInfo()
     })
     console.log(wx.getMenuButtonBoundingClientRect())
     wx.getMenuButtonBoundingClientRect().top 
@@ -115,11 +132,12 @@ Page({
   getQrCode: function (avaterSrc) {
     // wx.showLoading({ title: '生成中...', mask: true, });
     var that = this;
-    if (that.data.giftReceiveInfo.qr_url){
+    if (that.data.invitedcodeUrl){
       wx.downloadFile({
-        url: that.data.giftReceiveInfo.qr_url || '', //二维码路径
+        url: that.data.invitedcodeUrl, //二维码路径
         success: function (res) {
           // wx.hideLoading();
+          // console.log('二维码下载',res)
           if (res.statusCode === 200) {
             var codeSrc = res.tempFilePath;
             that.getHeadeImg(avaterSrc, codeSrc)
@@ -313,6 +331,25 @@ Page({
     wx.navigateBack({
       delta:-1
     })
+  },
+  jumpExchangeRule(){
+    wx.navigateTo({
+      url: '/pages/Vichy/exchangeRuleDetail/exchangeRuleDetail',
+    })
+  },
+  getLocationMap(){
+    if (this.data.giftReceiveInfo){
+        wx.openLocation({
+          name: this.data.giftReceiveInfo.store_name || '',
+          address: this.data.giftReceiveInfo.store_address || '',
+          latitude: Number(this.data.giftReceiveInfo.latitude),
+          longitude: Number(this.data.giftReceiveInfo.longitude),
+          scale: 18
+        })
+    }
+  },
+  catchtouchmove(){
+    return
   },
   onShareAppMessage(){
     return {

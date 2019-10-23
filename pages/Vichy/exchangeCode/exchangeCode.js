@@ -16,10 +16,17 @@ Page({
     api.post('v2/gift/getGiftReceiveInfo').then((res) => {
       wx.hideLoading()
       console.log('getGiftReceiveInfo', res)
-      this.setData({
-        isSureReceiveInfoComplate: true,
-        giftReceiveInfo: res.msg
-      })
+      if (res.msg.receive_flag === 1){
+        // 已兑换
+        wx.redirectTo({
+          url: '/pages/Vichy/exchangeSuccess/exchangeSuccess',
+        })
+      } else {
+        this.setData({
+          isSureReceiveInfoComplate: true,
+          giftReceiveInfo: res.msg
+        })
+      }
     })
   },
   /**

@@ -36,20 +36,6 @@ Page({
       })
     })
   },
-  // // 用户授权状态
-  // userAuthState(){
-  //   return new Promise(resolve => {
-  //       if (store.getItem('userData') && !store.getItem('userData').head_img && !store.getItem('userData').nick_name) {
-  //         this.setData({ userInfoState: false})
-  //         resolve()
-  //       } else if (store.getItem('userData') && store.getItem('userData').head_img && store.getItem('userData').nick_name){
-  //         this.setData({ userInfoState: true })
-  //         resolve()
-  //       } else {
-  //         resolve()
-  //       }
-  //   })
-  // },
   //用户信息状态
   userActiveState(){
     if (getApp().passIsLogin()) {
@@ -80,7 +66,10 @@ Page({
       store.setItem('shareMemberId', options.shareMemberId)
     }
     getApp().checkSessionFun().then(() => {
-        this.setData({ isShowApplyBtn: true})
+      if (store.getItem('userData') && store.getItem('userData').head_img && store.getItem('userData').nick_name){
+        this.setData({ userInfoState: true})
+      }
+      this.setData({ isShowApplyBtn: true})
       // this.userAuthState().then(() => {
       // })
     })
@@ -125,7 +114,7 @@ Page({
       lang: 'zh_CN',
       success: res => {
         console.log('用户授权信息', res.userInfo)
-        if ((res.userInfo.nickName != store.getItem('userData').nick_name) || (res.userInfo.avatarUrl != store.getItem('userData').head_img)){
+        if ((res.userInfo.nickName != store.getItem('userData').nick_name || res.userInfo.avatarUrl != store.getItem('userData').head_img) && store.getItem('userData')){
           store.setItem('wx_userInfo', res.userInfo)
           getApp().wx_modifyUserInfo().then(() => {
             this.userActiveState()
@@ -140,7 +129,7 @@ Page({
     })
   },
   // 免费领取
-  // jumpToFreeReceive(){
-  //   this.userActiveState()
-  // }
+  jumpToFreeReceive(){
+    this.userActiveState()
+  }
 })

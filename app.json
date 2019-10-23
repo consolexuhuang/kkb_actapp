@@ -9,7 +9,8 @@
     "pages/Vichy/exchange/exchange",
     "pages/Vichy/ruleDetail/ruleDetail",
     "pages/noFind/noFind",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/Vichy/exchangeRuleDetail/exchangeRuleDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

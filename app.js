@@ -83,6 +83,13 @@ App({
     redirectToState: true,
     scene:'',
     isIpX: false,
+
+    // API_URI: 'https://fit.jlife.vip/wx/api/'. //正式api
+    // TXMapKey: '4PGBZ-OVSCU-BLTV3-2Q242-P45OH-5LFEB', //正式腾讯密钥
+
+    API_URI: 'https://dev.jlife.vip/wx/api/', //测试api
+    TXMapKey: 'UMNBZ-AMQK6-22HS4-EJUVQ-D24LE-BBBK3', //测试腾讯密钥
+
   },
   //校验是否通过登陆
   passIsLogin() {
@@ -146,7 +153,7 @@ App({
                 }, 0)
               } else {
                 // 已关联公众号
-                wx.setStorageSync('shareMemberId', res.msg.id || '')
+                // wx.setStorageSync('shareMemberId', res.msg.id || '')
                 wx.setStorageSync('userData', res.msg)
                 //Store.setItem('userData', res.msg)
                 resolve()
@@ -179,10 +186,11 @@ App({
             success(res_userInfo) {
               Store.setItem('wx_userInfo', res_userInfo.userInfo)
               console.log('用户信息', res_userInfo)
+              let shareMemberId = wx.getStorageSync('shareMemberId') ? wx.getStorageSync('shareMemberId') : '';
               let data = {
                 code: res_code.code,
                 sourceData: _this.globalData.scene,
-                shareChannel: _this.globalData.shareMemberId || '',
+                shareChannel: shareMemberId || '',
                 nickName: res_userInfo.userInfo.nickName || '',
                 headImg: res_userInfo.userInfo.avatarUrl || '',
                 city: res_userInfo.userInfo.city || '',
@@ -273,7 +281,7 @@ App({
   },
   //修改用户信息接口
   wx_modifyUserInfo() {
-    wx.showLoading({ title: '加载中...',})
+    // wx.showLoading({ title: '加载中...',})
     return new Promise(resolve => {
       let data = {
         nickName: Store.getItem('wx_userInfo').nickName || '',
@@ -282,7 +290,7 @@ App({
         gender: Store.getItem('wx_userInfo').gender || ''
       }
       api.post('modifyUserInfo', data).then(res => {
-        wx.hideLoading()
+        // wx.hideLoading()
         console.log('修改用户信息接口', res)
         if (res.msg) {
            Store.setItem('userData', res.msg) //暂时不同步更新用户数据

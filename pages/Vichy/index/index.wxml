@@ -8,8 +8,8 @@
     <!-- <view class="btn" bindtap="jumpToFreeReceive" wx:if='{{userInfoState}}' style="margin-bottom:{{currentIndex === index_banner.length-1 ? '50rpx' : 0}}">免费申领</view> -->
     
     <view class="btn" style="margin-bottom:{{currentIndex === index_banner.length-1 ? '50rpx' : 0}}">免费申领
-       <button open-type='getUserInfo' bindgetuserinfo = 'updateUserReceive' class='getUserInfoBtn'></button>
-       <!-- <button open-type='getUserInfo' bindgetuserinfo = 'updateUserReceive' class='getUserInfoBtn'></button> -->
+       <button open-type='getUserInfo' wx:if='{{!userInfoState}}' bindgetuserinfo = 'updateUserReceive' class='getUserInfoBtn'></button>
+       <button class='getUserInfoBtn' wx:else bindtap="jumpToFreeReceive"></button>
     </view>
 
     <view class="chevronBox" wx:if='{{currentIndex !== index_banner.length-1}}' bindtap="nextBanner">

@@ -23,7 +23,7 @@
          </view>
       </picker>
    </view>
-   <view class="store_tip">
+   <view class="store_tip" wx:if='{{storeLoaction[store_index].address}}'>
       <text class="icondingwei iconfont icon"></text>
       <text class="storeDetail">{{storeLoaction[store_index].address}} <text wx:if='{{storeLoaction[store_index].DIST}}'>（距您{{storeLoaction[store_index].DIST/1000}}km）</text></text>
    </view>

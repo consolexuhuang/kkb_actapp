@@ -1,5 +1,5 @@
 <!--pages/Vichy/exchangeCode/exchangeCode.wxml-->
-<view class="checkSaleBox animated fadeIn">
+<view class="checkSaleBox animated fadeIn" wx:if='{{giftReceiveInfo}}'>
    <image class="headImg animated fadeIn" wx:if='{{giftReceiveInfo.head_img}}' src="{{giftReceiveInfo.head_img}}"></image>
    <view class="currentInvitation">目前累积邀请 
        <text class="currentInvitationNum">{{giftReceiveInfo.share_member_count || 0}}</text> 人
@@ -17,7 +17,6 @@
 
    <view class="codeBox animated fadeIn" wx:if='{{giftReceiveInfo.qr_url}}'>
        <image class="codeImg" src="{{giftReceiveInfo.qr_url}}"></image>
-       <text class="scanCont">请向工作人员出示此二维码完成兑换
-</text>
+       <text class="scanCont">请向工作人员出示此二维码完成兑换</text>
    </view>
 </view>

@@ -74,7 +74,7 @@ Page({
       // 本地无地址 腾讯解析
       var that = this
       let qqmapsdk = new QQMapWX({
-        key: 'UMNBZ-AMQK6-22HS4-EJUVQ-D24LE-BBBK3'
+        key: getApp().globalData.TXMapKey
       });
       //根据经纬度获取所在城市
       qqmapsdk.reverseGeocoder({
@@ -172,6 +172,7 @@ Page({
         shareMemberId: store.getItem('shareMemberId') || '',
       }
       api.post('v2/gift/reserveGiftReceive',data).then(res => {
+        wx.setStorageSync('shareMemberId', res.msg.member_id || '')
         wx.hideLoading()
         resolve(res)
       })
