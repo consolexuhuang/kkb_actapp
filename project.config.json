@@ -48,13 +48,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "pages/Vichy/index/index",
 					"pathName": "pages/Vichy/index/index",
-					"query": "shareMemberId=1181801112118890496",
+					"query": "shareMemberId=1186945796612952064",
 					"scene": null
 				},
 				{

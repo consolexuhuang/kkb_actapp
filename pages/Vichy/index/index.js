@@ -63,6 +63,7 @@ Page({
    */
   onLoad: function (options) {
     if (options.shareMemberId) {
+      console.log('shareMemberId-index', options.shareMemberId)
       store.setItem('shareMemberId', options.shareMemberId)
     }
     getApp().checkSessionFun().then(() => {

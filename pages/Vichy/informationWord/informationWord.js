@@ -172,7 +172,7 @@ Page({
         shareMemberId: store.getItem('shareMemberId') || '',
       }
       api.post('v2/gift/reserveGiftReceive',data).then(res => {
-        wx.setStorageSync('shareMemberId', res.msg.member_id || '')
+        // wx.setStorageSync('shareMemberId', res.msg.member_id || '')
         wx.hideLoading()
         resolve(res)
       })

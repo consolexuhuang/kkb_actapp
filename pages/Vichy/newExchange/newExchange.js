@@ -36,8 +36,9 @@ Page({
   getCodeConfig(){
     return new Promise(resolve => {
       let data = {
-        memberId: store.getItem('userData').id,
-        liteType: 'gift'
+        scene: store.getItem('userData').id,
+        liteType: 'gift',
+        page: '/pages/Vichy/index/index'
       }
       console.log(util.formatUrlParams(`${getApp().globalData.API_URI}getLiteQrcode`, data))
       this.setData({
@@ -353,8 +354,10 @@ Page({
   },
   onShareAppMessage(){
     return {
-      title: "",
-      path: `/pages/index/index?shareMemberId=${store.getItem('shareMemberId')}`,
+      title: "送你一份Vichy薇姿礼包，点击申领",
+      path: `/pages/Vichy/index/index?shareMemberId=${store.getItem('userData').id}`,
+      imageUrl:'https://img.cdn.powerpower.net/5db13871e4b01feb28f973e9.jpg'
+      
     }
   }
 })

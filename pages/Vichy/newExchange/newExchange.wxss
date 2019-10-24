@@ -13,7 +13,7 @@ page{
   height: 100%; */
 }
 .navback{
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   display: flex;
   align-items: center;
