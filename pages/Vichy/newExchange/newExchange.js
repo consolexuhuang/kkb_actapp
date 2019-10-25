@@ -2,6 +2,7 @@
 const api = getApp().api;
 const store = getApp().store;
 const util = require('../../../utils/util.js');
+let isAdvanceOpenShare = false //是否在未下载完之前显示
 Page({
 
   /**
@@ -84,9 +85,11 @@ Page({
   invitationFriend() {
     if (this.data.canvasObj) {
       wx.hideLoading()
+      isAdvanceOpenShare = false
       this.setData({ invitationFriendEnter: true, invitationPost: true });
       this.sharePosteCanvas(this.data.canvasObj)
     } else {
+      isAdvanceOpenShare = true
       wx.showLoading({ title: '卡片生成中...',})
     }
   },
@@ -175,9 +178,24 @@ Page({
             headImg: headImg
           }
           that.setData({ canvasObj: obj })
+          if (isAdvanceOpenShare){
+            //如果提前打开海报，等待图片下载完毕后自动打开
+            that.setData({ invitationFriendEnter: true, invitationPost: true });
+            that.sharePosteCanvas(obj)
+          }
         } else {
           var headImg = "";
+          let obj = {
+            avaterSrc: avaterSrc,
+            codeSrc: codeSrc,
+            headImg: headImg
+          }
           that.setData({ canvasObj: obj })
+          if (isAdvanceOpenShare) {
+            //如果提前打开海报，等待图片下载完毕后自动打开
+            that.setData({ invitationFriendEnter: true, invitationPost: true });
+            that.sharePosteCanvas(obj)
+          }
         }
       }
     })
@@ -191,7 +209,7 @@ Page({
    */
   sharePosteCanvas: function (canvasObj) {
     var that = this;
-    wx.showLoading({ title: '生成中...', mask: true, })
+    // wx.showLoading({ title: '生成中...', mask: true, })
     var cardInfo = that.data.cardInfo; //需要绘制的数据集合
     const ctx = wx.createCanvasContext('myCanvas'); //创建画布
     var width = "";
