@@ -264,7 +264,7 @@ Page({
     } else {
       wx.showModal({
         title: '提示',
-        content: '是否提交？',
+        content: '是否提交申请？',
         success: res => {
           if(res.confirm){
             this.getReserveGiftReceive().then(res_sub => {
@@ -275,7 +275,7 @@ Page({
                 })
               } else {
                 wx.showToast({
-                  title: res_sub.msg || '提交失败',
+                  title: res_sub.msg || '提交失败！',
                   icon: 'none'
                 })
               }

@@ -18,7 +18,7 @@ Page({
     invitedcodeUrl:'', //邀请人二维码
   },
   
-  // 提交信息
+  // 获取提交信息
   getGiftReceiveInfo() {
     return new Promise(resolve => {
       if (store.getItem('giftReceive')){
