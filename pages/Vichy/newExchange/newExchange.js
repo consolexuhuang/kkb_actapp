@@ -38,7 +38,7 @@ Page({
       let data = {
         scene: store.getItem('userData').id,
         liteType: 'gift',
-        page: '/pages/Vichy/index/index'
+        page: 'pages/Vichy/index/index'
       }
       console.log(util.formatUrlParams(`${getApp().globalData.API_URI}getLiteQrcode`, data))
       this.setData({
@@ -239,7 +239,6 @@ Page({
         ctx.drawImage(canvasObj.headImg, width / 2 - (width / 4.3 / 2), height / 7.315, width / 4.3, width / 4.3)
         ctx.restore();
       }
-      
       setTimeout(function () {
         ctx.draw();
         wx.hideLoading();

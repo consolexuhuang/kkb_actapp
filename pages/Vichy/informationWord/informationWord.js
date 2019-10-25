@@ -262,17 +262,25 @@ Page({
         icon:'none'
       })
     } else {
-      this.getReserveGiftReceive().then(res_sub => {
-        console.log('reserveGiftReceive提交', res_sub)
-        if (res_sub.msg && res_sub.code === 0){
-          wx.redirectTo({
-            url: '/pages/Vichy/newExchange/newExchange',
-          })
-        } else {
-          wx.showToast({
-            title: res_sub.msg || '提交失败',
-            icon: 'none'
-          })
+      wx.showModal({
+        title: '提示',
+        content: '是否提交？',
+        success: res => {
+          if(res.confirm){
+            this.getReserveGiftReceive().then(res_sub => {
+              console.log('reserveGiftReceive提交', res_sub)
+              if (res_sub.msg && res_sub.code === 0){
+                wx.redirectTo({
+                  url: '/pages/Vichy/newExchange/newExchange',
+                })
+              } else {
+                wx.showToast({
+                  title: res_sub.msg || '提交失败',
+                  icon: 'none'
+                })
+              }
+            })
+          }
         }
       })
       
