@@ -1,13 +1,27 @@
 /* pages/Vichy/exchangeRuleDetail/exchangeRuleDetail.wxss */
 page{
+  /* background-image: url('https://img.cdn.powerpower.net/5da96ab7e4b0551951d0c4e7.png');
+  background-size: 100% 100%;
+  background-repeat:no-repeat; */
+  /* background-attachment: fixed; */
+  padding-bottom: 45rpx;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; */
+}
+/* 兼容ios写法 */
+page:before {
+  content: ' ';
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-image: url('https://img.cdn.powerpower.net/5da96ab7e4b0551951d0c4e7.png');
   background-size: 100% 100%;
   background-repeat:no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 }
 .ruleDetailBox{
   width:630rpx;
@@ -15,64 +29,7 @@ page{
   text-align: center;
   padding: 60rpx 28rpx 60rpx 48rpx;
   box-sizing: border-box;
-  /* margin: 63rpx auto 45rpx */
-}
-.ruleTitle{
-  font-size:36rpx;
-  font-family:PingFangSC-Medium,PingFangSC;
-  font-weight:500;
-  color:rgba(20,20,20,1);
-  line-height:36rpx;
-  text-align: center;
-  margin-bottom: 55rpx;
-}
-.ruleConBox{
-  display: flex;
-  margin-bottom: 15rpx;
-}
-.point{
-  width: 10rpx;
-  height: 10rpx;
-  border-radius: 50%;
-  background: #333333;
-  margin-right: 10rpx;
-  margin-top: 15rpx;
-  flex-shrink: 0;
-}
-.ruleCon{
-  font-size:28rpx;
-  font-family:PingFangSC-Regular,PingFangSC;
-  font-weight:400;
-  color:rgba(51,51,51,1);
-  line-height:40rpx;
-  text-align: left
-}
-.logo{
-  width: 100%;
-  margin-top: 220rpx;
-}
-.logoImg{
-  margin: 0 auto;
-  width: 385rpx;
-  height: 45rpx;
-}/* pages/Vichy/ruleDetail/ruleDetail.wxss */
-page{
-  background-image: url('https://img.cdn.powerpower.net/5da96ab7e4b0551951d0c4e7.png');
-  background-size: 100% 100%;
-  background-repeat:no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-.ruleDetailBox{
-  width:630rpx;
-  background:rgba(255,255,255,1);
-  text-align: center;
-  padding: 60rpx 28rpx 60rpx 48rpx;
-  box-sizing: border-box;
-  /* margin: 63rpx auto 45rpx */
+  margin: 63rpx auto 0
 }
 .ruleTitle{
   font-size:36rpx;

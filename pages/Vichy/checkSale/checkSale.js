@@ -81,6 +81,11 @@ Page({
             icon: 'none'
           })
         }
+      } else {
+        wx.showToast({
+          title: res.msg || '兑换失败！',
+          icon: 'none'
+        })
       }
     })
   },

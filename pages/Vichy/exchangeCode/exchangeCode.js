@@ -58,4 +58,12 @@ Page({
       url: '/pages/Vichy/index/index',
     })
   },
+  onPullDownRefresh(){
+    getApp().checkSessionFun().then(() => {
+      if (getApp().passIsLogin()) {
+        this.checkSubmit()
+        wx.stopPullDownRefresh()
+      }
+    })
+  },
 })

@@ -62,7 +62,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.shareMemberId) {
+    console.log('options----index', options)
+    if (options.scene) {
+      //小程序码参数
+      console.log('scene-index', options.scene)
+      store.setItem('shareMemberId', options.scene)
+    } else if (options.shareMemberId) {
+       //分享链接参数
       console.log('shareMemberId-index', options.shareMemberId)
       store.setItem('shareMemberId', options.shareMemberId)
     }

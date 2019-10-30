@@ -1,8 +1,8 @@
 <!--pages/Vichy/exchangeRuleDetail/exchangeRuleDetail.wxml-->
 <view class="ruleDetailBox">
-   <view class="ruleTitle">活动规则</view>
+   <view class="ruleTitle">活动&兑换规则</view>
    <view class="ruleConBox">
-      <rich-text class="ruleCon" nodes='<p style="margin-bottom:5px">1.每人限限定指定日期领取限定指定日期领取限定指定日期领取限定指定日期领取领指定份数</p><p style="margin-bottom:5px">2.限定指定日期限定指定日期领取限定指定日期领取领取</p>'></rich-text>
+      <rich-text class="ruleCon" nodes='<p style="margin-bottom:5px;text-indent:-6px">【活动规则】</p><p style="margin-bottom:5px">1.本次活动由Justin&Julie Fitness与Vichy薇姿联合举办，礼品数量共计25000份。</p><p style="margin-bottom:5px">2.活动截止时间为2019年11月13日，礼品领取时间为2019年11月11日至11月13日。</p><p style="margin-bottom:5px">3.礼品只能在领取时间，前往指定门店兑换并领取，遵循先到先得，送完为止的原则。</p><p style="margin-bottom:5px">4.如果逾期未领取，视为放弃资格，礼品不予保留。</p><p style="margin-bottom:5px">5.每位用户活动期间仅有一次申领机会，不可重复参与。</p><p style="margin-bottom:5px;margin-top:10px;text-indent:-6px">【兑换规则】</p><p style="margin-bottom:5px">1.用户申领提交成功，即可领取一份Vichy薇姿礼包。</p><p style="margin-bottom:5px">2.每份Vichy薇姿礼包含有薇姿89眼部微精华露1ml*3；薇姿赋能89号微精华露1.5ml*1；薇姿温泉矿物系列水活霜1.5ml*1。</p><p style="margin-bottom:5px">3.活动截止时间内邀请好友成功申领，可以获得更多份Vichy薇姿礼包，每份礼包包含物品完全相同。</p><p style="margin-bottom:5px">4.邀请方式有三种：<p style="text-indent: 20px;font-size:12px">a.小程序右上角点击“转发”，发送给好友或群。</p><p style="text-indent: 20px;font-size:12px"">b.点击邀请好友后，点击“发送给好友”，发送给好友或群。</p><p style="text-indent: 20px;font-size:12px"">c.点击邀请好友后，点击“分享朋友圈”（带有邀请人头像的卡片会保存至相册），将卡片发送至好友、群或朋友圈。</p></p><p style="margin-bottom:5px">5.被邀请人可以通过以上三种方式的任何一种（点击小程序链接，或长按卡片识别小程序码）进入小程序。</p><p style="margin-bottom:5px">6.被邀请人必须为上海地区用户，且成功提交申领，邀请人数才会增加。</p><p style="margin-bottom:5px">7.如果被邀请人已经提交过申领，则无法再次邀请TA为自己增加邀请人数。</p><p style="margin-bottom:5px">8.Justin&Julie Fitness对本次活动规则拥有最终解释权</p>'></rich-text>
    </view>
    <view class="logo">
       <image src="https://img.cdn.powerpower.net/5da9236fe4b0551951d0c100.png" class="logoImg"></image>

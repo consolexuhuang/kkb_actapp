@@ -1,9 +1,9 @@
 /* pages/Vichy/newExchange/newExchange.wxss */
 page{
-  background-image: url('https://img.cdn.powerpower.net/5da811cde4b01043d7d7406b.png');
-  background-size: 100% 100%;
-  background-repeat:no-repeat;
-  background-attachment: fixed;
+  /* background-image: url('https://img.cdn.powerpower.net/5da811cde4b01043d7d7406b.png');
+  background-size: 100% 100%; */
+  /* background-repeat:no-repeat; */
+  /* background-attachment: fixed; */
   text-align: center;
   display: table;
   /* height: 100%; */
@@ -12,6 +12,20 @@ page{
   justify-content: center;
   height: 100%; */
 }
+/* 兼容ios写法 */
+page:before {
+  content: ' ';
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('https://img.cdn.powerpower.net/5da811cde4b01043d7d7406b.png');
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+}
+
 .navback{
   position: fixed;
   z-index: 1000;
@@ -259,7 +273,7 @@ page{
   font-weight:400;
   color:rgba(20,20,20,1);
   line-height:46rpx;
-  padding: 40rpx 100rpx;
+  padding: 40rpx;
   box-sizing: border-box;
   text-align: center;
 }
@@ -284,9 +298,7 @@ page{
   flex-shrink: 0;
   color:rgba(51,51,51,1);
 }
-.exchange_tipPlace{
-  color: #3C95FD;
-}
+
 .exchangeIcon{
   color: #000000;
   font-size:28rpx;
@@ -295,6 +307,7 @@ page{
   align-self: flex-start;
   line-height: 28rpx;
 }
+
 .exchangeIconPlace{
   color: #3C95FD;
   font-size:24rpx;
@@ -304,9 +317,28 @@ page{
   line-height: 30rpx;
   margin-left: -1rpx;
 }
+.exchange_tipPlace{
+  color: #3C95FD;
+  margin-bottom: 30rpx;
+}
 .exchange_tipTop{
   color: #000000
 }
+/* .exchange_tipCareful{
+  display: flex;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(20,20,20,1);
+  line-height:24rpx;
+  align-items: center;
+  justify-content: center;
+}
+.tipCarefulIcon{
+  font-size:22rpx;
+  margin-right: 10rpx;
+} */
+
 .sureBtn{
   font-size:34rpx;
   font-family:PingFangSC-Medium,PingFangSC;

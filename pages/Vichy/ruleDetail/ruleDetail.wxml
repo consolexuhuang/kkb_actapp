@@ -5,7 +5,7 @@
       <!-- <text class="point"></text> -->
       <!-- <view class="ruleCon">1.本次活动由Justin&Julie Fitness与Vichy薇姿联合举办，礼品数量共计50000份！</view> -->
       <!-- <rich-text class="ruleCon" nodes='{{activeData.rule}}'></rich-text> -->
-      <rich-text class="ruleCon" nodes='<p style="margin-bottom:5px">1.每人限限定指定日期领取限定指定日期领取限定指定日期领取限定指定日期领取领指定份数</p><p style="margin-bottom:5px">2.限定指定日期限定指定日期领取限定指定日期领取领取</p>'></rich-text>
+      <rich-text class="ruleCon" nodes='<p style="margin-bottom:5px">1.本次活动由Justin&Julie Fitness与Vichy薇姿联合举办，礼品数量共计25000份。</p><p style="margin-bottom:5px">2.活动截止时间为2019年11月13日，礼品领取时间为2019年11月11日至11月13日。</p><p style="margin-bottom:5px">3.每份Vichy薇姿礼包含有薇姿89眼部微精华露1ml*3；薇姿赋能89号微精华露1.5ml*1；薇姿温泉矿物系列水活霜1.5ml*1。</p><p style="margin-bottom:5px">4.礼品只能在指定时间，前往指定门店领取，选择后不可更改。</p><p style="margin-bottom:5px">5.礼品数量有限，领取遵循先到先得，送完为止的原则；逾期未领取视为放弃资格，礼品不予保留。</p><p style="margin-bottom:5px">6.每位用户活动期间仅有一次申领机会，不可重复参与。</p>'></rich-text>
    </view>
    <!-- <view class="ruleConBox">
       <text class="point"></text>

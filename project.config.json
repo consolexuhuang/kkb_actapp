@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -68,6 +68,20 @@
 					"id": -1,
 					"name": "pages/Vichy/exchangeCode/exchangeCode",
 					"pathName": "pages/Vichy/exchangeCode/exchangeCode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Vichy/exchangeRuleDetail/exchangeRuleDetail",
+					"pathName": "pages/Vichy/exchangeRuleDetail/exchangeRuleDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Vichy/ruleDetail/ruleDetail",
+					"pathName": "pages/Vichy/ruleDetail/ruleDetail",
 					"query": "",
 					"scene": null
 				}

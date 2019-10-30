@@ -30,17 +30,32 @@ Page({
     }
     api.post('v2/gift/getGiftReceiveConfig', data).then(res => {
       console.log('福利信息内容', res)
-      let data_list = []
-      for (let i = 0; i < res.msg.data_list.length; i++) {
-        data_list.push(`${res.msg.data_list[i].date} 周${res.msg.data_list[i].day}`)
+      if(res.code === 1 && res.msg){
+        wx.showModal({
+          title: '提示！',
+          showCancel: false,
+          content: res.msg || '活动已结束！',
+          success: (res_Model) => {
+            if (res_Model.confirm){
+              wx.navigateBack({
+                delta: -1
+              })
+            }
+          }
+        })
+      } else {
+          let data_list = []
+          for (let i = 0; i < res.msg.data_list.length; i++) {
+            data_list.push(`${res.msg.data_list[i].date} 周${res.msg.data_list[i].day}`)
+          }
+          this.setData({
+            activeData: res.msg,
+            locationData: res.msg.city_store_map,
+            placeLoaction: Object.keys(res.msg.city_store_map),
+            storeLoaction: Object.values(res.msg.city_store_map)[0],
+            dataList: data_list
+          })
       }
-      this.setData({
-        activeData: res.msg,
-        locationData: res.msg.city_store_map,
-        placeLoaction: Object.keys(res.msg.city_store_map),
-        storeLoaction: Object.values(res.msg.city_store_map)[0],
-        dataList: data_list
-      })
     })
   },
   // 授权电话
@@ -76,7 +91,7 @@ Page({
       let qqmapsdk = new QQMapWX({
         key: getApp().globalData.TXMapKey
       });
-      //根据经纬度获取所在城市
+      //根据经纬度获取所在城市 模拟江苏 32.45，117.18
       qqmapsdk.reverseGeocoder({
         location: { 
           latitude: getApp().globalData.location.latitude, 
@@ -86,13 +101,18 @@ Page({
           //address 城市
           that.setData({ address: res.result.address_component.city })
           store.setItem('address', res.result.address_component.city)
-          if (res.result.address_component.city !== '上海市') {
+          if (res.result.address_component.city !== '上海市' && store.getItem('userData').order_count === 0) {
+            //不是上海市 && 订单数0单
             wx.showModal({
               showCancel: false,
               title: '提示',
-              content: '该活动仅限上海区域',
+              content: '该活动仅限上海区域，如有疑问请联系客服（微信：JJFitness）',
             })
           }
+        },
+        fail:function(){
+          //超过并发或者超过当天最大量 || 定位出错
+          store.setItem('address', '上海市')
         }
       })
     } else {
@@ -250,11 +270,11 @@ Page({
   submit(){
     if (!getApp().globalData.location){
       this.again_getLocation()
-    } else if (store.getItem('address') !== '上海市') {
+    } else if (store.getItem('address') !== '上海市' && store.getItem('userData').order_count === 0) {
       wx.showModal({
         showCancel: false,
         title: '提示',
-        content: '该活动仅限上海区域',
+        content: '该活动仅限上海区域，如有疑问请联系客服（微信：JJFitness）',
       })
     } else if (!this.data.activeData.cell_phone){
       wx.showToast({

@@ -52,6 +52,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    isAdvanceOpenShare = false
     Promise.all([this.getGiftReceiveInfo(), this.getCodeConfig()]).then(() => {
       this.getAvaterInfo()
     })
@@ -112,11 +113,13 @@ Page({
   getAvaterInfo: function () {
     // wx.showLoading({ title: '生成中...', mask: true, });
     var that = this;
+    console.log('背景图片下载中......')
     wx.downloadFile({
       url: 'https://img.cdn.powerpower.net/5da93260e4b0551951d0c11a.png', //图片路径
       success: function (res) {
         // wx.hideLoading();
         if (res.statusCode === 200) {
+          console.log('背景图片下载完毕----')
           var avaterSrc = res.tempFilePath; //下载成功返回结果
           that.getQrCode(avaterSrc); //继续下载二维码图片
         } else {
@@ -135,13 +138,14 @@ Page({
   // 下载二维码图片
   getQrCode: function (avaterSrc) {
     // wx.showLoading({ title: '生成中...', mask: true, });
+    console.log('二维码下载中......')
     var that = this;
     if (that.data.invitedcodeUrl){
       wx.downloadFile({
         url: that.data.invitedcodeUrl, //二维码路径
         success: function (res) {
           // wx.hideLoading();
-          // console.log('二维码下载',res)
+          console.log('二维码下载完毕------')
           if (res.statusCode === 200) {
             var codeSrc = res.tempFilePath;
             that.getHeadeImg(avaterSrc, codeSrc)
@@ -166,9 +170,11 @@ Page({
   //下载头像
   getHeadeImg(avaterSrc, codeSrc) {
     var that = this;
+    console.log('头像下载中......')
     wx.downloadFile({
       url: that.data.giftReceiveInfo.head_img ||'https://img.cdn.powerpower.net/5daed485e4b071388713f92d.png', //头像路径
       success: function (res) {
+        console.log('头像下载完毕-----')
         wx.hideLoading();
         if (res.statusCode === 200) {
           var headImg = res.tempFilePath;
@@ -220,8 +226,8 @@ Page({
       var right = rect.right;
       // width = rect.width * 0.8;
       // var left = rect.left + 5;
-      ctx.setFillStyle('#fff');
-      ctx.fillRect(0, 0, rect.width, height);
+      // ctx.setFillStyle('#fff');
+      // ctx.fillRect(0, 0, rect.width, height);
       
       if (canvasObj.avaterSrc) {
         ctx.drawImage(canvasObj.avaterSrc, 0, 0, rect.width, rect.height);

@@ -1,13 +1,27 @@
 /* pages/Vichy/ruleDetail/ruleDetail.wxss */
 page{
+  /* background-image: url('https://img.cdn.powerpower.net/5da96ab7e4b0551951d0c4e7.png');
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background-attachment: fixed; */
+  padding-bottom: 45rpx;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; */
+}
+/* 兼容ios写法 */
+page:before {
+  content: ' ';
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-image: url('https://img.cdn.powerpower.net/5da96ab7e4b0551951d0c4e7.png');
   background-size: 100% 100%;
   background-repeat:no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 }
 .ruleDetailBox{
   width:630rpx;
@@ -15,7 +29,7 @@ page{
   text-align: center;
   padding: 60rpx 28rpx 60rpx 48rpx;
   box-sizing: border-box;
-  /* margin: 63rpx auto 45rpx */
+  margin: 63rpx auto 0
 }
 .ruleTitle{
   font-size:36rpx;
