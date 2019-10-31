@@ -52,6 +52,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.subFlag){
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '您已成功申领1份薇姿礼包，邀请好友可获得更多。',
+      })
+    }
     isAdvanceOpenShare = false
     Promise.all([this.getGiftReceiveInfo(), this.getCodeConfig()]).then(() => {
       this.getAvaterInfo()
@@ -78,17 +85,29 @@ Page({
 
   },
   checkReward(){
-    this.setData({
-      checkRewardBl: true
-    })
+    // 已兑换
+    if (this.data.giftReceiveInfo.receive_flag === 1){
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '您已完成兑换，无法重复参加本次活动。',
+      })
+    } else {
+      this.setData({
+        checkRewardBl: true
+      })
+    }
   },
   // 邀请入口
   invitationFriend() {
-    if (this.data.canvasObj) {
+    if (this.data.canvasObj || store.getItem('canvasObj')) {
       wx.hideLoading()
       isAdvanceOpenShare = false
-      this.setData({ invitationFriendEnter: true, invitationPost: true });
-      this.sharePosteCanvas(this.data.canvasObj)
+      this.setData({ 
+        invitationFriendEnter: true, 
+        invitationPost: true,
+      });
+      this.sharePosteCanvas(this.data.canvasObj || store.getItem('canvasObj'))
     } else {
       isAdvanceOpenShare = true
       wx.showLoading({ title: '卡片生成中...',})
@@ -184,6 +203,8 @@ Page({
             headImg: headImg
           }
           that.setData({ canvasObj: obj })
+          // 只有下载成功后再存缓存
+          store.setItem('canvasObj', obj)
           if (isAdvanceOpenShare){
             //如果提前打开海报，等待图片下载完毕后自动打开
             that.setData({ invitationFriendEnter: true, invitationPost: true });
@@ -382,5 +403,12 @@ Page({
       imageUrl:'https://img.cdn.powerpower.net/5db13871e4b01feb28f973e9.jpg'
       
     }
-  }
+  },
+  onPullDownRefresh(){
+    api.post('v2/gift/getGiftReceiveInfo').then((res) => {
+      wx.stopPullDownRefresh()
+      console.log('下拉刷新完成')
+      if (res.msg) this.setData({ giftReceiveInfo: res.msg })
+    })
+  },
 })

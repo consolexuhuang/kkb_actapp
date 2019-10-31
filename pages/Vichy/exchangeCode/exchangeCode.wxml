@@ -6,7 +6,7 @@
    </view>
    <!-- 可兑换 -->
    <view class="convertibleBox animated fadeIn" wx:if='{{giftReceiveInfo.items.length>0}}'>
-       <view class="convertible_title">可兑换</view>
+       <view class="convertible_title">可兑换 {{giftReceiveInfo.reserve_count}} 份薇姿礼包</view>
        <view class="convertible_cont" wx:for='{{giftReceiveInfo.items}}' wx:key='index'>{{item.name}}*{{item.count}}</view>
    </view>
    <!-- 无兑换 -->

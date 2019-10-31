@@ -6,7 +6,7 @@
        <text class="currentInvitationNum">{{currentGiftReceiveInfo.share_member_count}}</text> 人
    </view>
    <view class="convertibleBox animated fadeIn" wx:if='{{currentGiftReceiveInfo}}'>
-       <view class="convertible_title">{{currentGiftReceiveInfo.items.length > 0 ? '可兑换': '暂无可兑换'}}</view>
+       <view class="convertible_title">可兑换 {{currentGiftReceiveInfo.reserve_count}} 份薇姿礼包</view>
        <view class="convertible_cont" wx:for='{{currentGiftReceiveInfo.items}}' wx:key='index'>{{item.name}}*{{item.count}}</view>
        <view class="convertible_btn animated fadeIn" bindtap="sureExchange" wx:if='{{currentGiftReceiveInfo.items.length > 0 && currentGiftReceiveInfo.receive_flag == 0}}'>确认兑换</view>
        <view class="convertible_overdueBtn animated fadeIn" wx:if='{{currentGiftReceiveInfo.receive_flag == 1}}'>用户已兑换</view>

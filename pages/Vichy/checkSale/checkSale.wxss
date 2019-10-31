@@ -60,7 +60,7 @@ page{
 .convertible_title{
   font-size:34rpx;
   font-family:PingFangSC-Medium,PingFangSC;
-  font-weight:500;
+  font-weight:bold;
   color:rgba(20,20,20,1);
   line-height:34rpx;
   text-align: center;

@@ -2,6 +2,8 @@
   "navigationBarTitleText": "兑换页",
   "navigationBarTextStyle": "black",
   "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
   "usingComponents": {
     "van-popup": "/libs/vant-weapp/dist/popup/index"
   }

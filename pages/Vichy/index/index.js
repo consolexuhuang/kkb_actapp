@@ -131,7 +131,8 @@ Page({
         }
       },
       fail: () => {
-        this.userActiveState()
+        console.log('拒绝')
+        // this.userActiveState()
       }
     })
   },

@@ -291,7 +291,7 @@ Page({
               console.log('reserveGiftReceive提交', res_sub)
               if (res_sub.msg && res_sub.code === 0){
                 wx.redirectTo({
-                  url: '/pages/Vichy/newExchange/newExchange',
+                  url: '/pages/Vichy/newExchange/newExchange?subFlag=1',
                 })
               } else {
                 wx.showToast({
