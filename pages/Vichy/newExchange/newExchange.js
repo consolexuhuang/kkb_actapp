@@ -360,7 +360,7 @@ Page({
   // 复制剪贴板
   clickPasteKey(){
     wx.setClipboardData({
-      data: '20元薇姿旗舰店专属券点击复制口令 ¥MAAbYqpxj8o¥打开淘宝领取',
+      data: '薇姿旗舰店双十一优惠券抢先领，点击复制口令￥ULHdYKpulkm￥打开淘宝领取',
       success(res) {
         wx.vibrateShort({})
         // wx.getClipboardData({
@@ -398,7 +398,7 @@ Page({
   },
   onShareAppMessage(){
     return {
-      title: "送你一份Vichy薇姿礼包，点击申领",
+      title: "送你一份VICHY薇姿限量礼包，点击免费领取",
       path: `/pages/Vichy/index/index?shareMemberId=${store.getItem('userData').id}`,
       imageUrl:'https://img.cdn.powerpower.net/5db13871e4b01feb28f973e9.jpg'
       

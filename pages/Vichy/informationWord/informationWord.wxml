@@ -12,7 +12,7 @@
    <view class="storeChooseBox">
       <picker mode = 'selector' bindchange="bindPickerChange" value="{{place_index}}" range="{{placeLoaction}}">
          <view class="storeChooseBoxLeft">
-            <text class="animated fadeIn" wx:for='{{storeLoaction}}' wx:key='index' wx:if='{{place_index == index}}'>{{placeLoaction[place_index]}}</text>
+            <text class="animated fadeIn" wx:for='{{placeLoaction}}' wx:key='index' wx:if='{{place_index == index}}'>{{placeLoaction[place_index]}}</text>
             <text class="iconlujing-1 iconfont dirIcon"></text>
          </view>
       </picker>
