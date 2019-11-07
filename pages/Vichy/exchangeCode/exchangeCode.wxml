@@ -1,5 +1,5 @@
 <!--pages/Vichy/exchangeCode/exchangeCode.wxml-->
-<view class="checkSaleBox animated fadeIn" wx:if='{{giftReceiveInfo}}'>
+<view class="checkSaleBox animated fadeIn">
    <image class="headImg animated fadeIn" wx:if='{{giftReceiveInfo.head_img}}' src="{{giftReceiveInfo.head_img}}"></image>
    <view class="currentInvitation">目前累积邀请 
        <text class="currentInvitationNum">{{giftReceiveInfo.share_member_count || 0}}</text> 人
@@ -10,7 +10,7 @@
        <view class="convertible_cont" wx:for='{{giftReceiveInfo.items}}' wx:key='index'>{{item.name}}*{{item.count}}</view>
    </view>
    <!-- 无兑换 -->
-   <view class="convertibleBox animated fadeIn" wx:elif='{{!giftReceiveInfo.items && isSureReceiveInfoComplate}}'>
+   <view class="convertibleBox animated fadeIn" wx:if='{{!giftReceiveInfo.items && isSureReceiveInfoComplate}}'>
        <view class="convertible_title">暂无可兑换</view>
        <view class="backHome" bindtap="backHome">申领</view>
    </view>

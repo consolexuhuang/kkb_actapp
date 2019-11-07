@@ -1,10 +1,12 @@
 <!--pages/Vichy/exchangeSuccess/exchangeSuccess.wxml-->
-<view class="around1"></view>
-<view class="around2"></view>
-<view class="around3"></view>
-<view class="around4"></view>
-<view class="around5"></view>
-<view class="around6"></view>
-
-<text class="exchangeSuccess">您已完成兑换</text>
-<image class="activeLogo" src="https://img.cdn.powerpower.net/5da9236fe4b0551951d0c100.png"></image>
+<view class="contain">
+    <view class="exchangeSuccessContBox">
+      <view class="exchangeSuccessCont">兑换成功!</view>
+      <text class="exchangeSuccessCont2">Vichy薇姿礼包已成功兑换 \n 感谢参与本次活动</text>
+    </view>
+    <view class="getCouponBox">
+      <text class="getCouponCont" wx:if='{{userInfo.order_count == 0}}'>您已获得 \n 新人首单<text class="couponPrice">19.9元</text>特权</text>
+      <text class="getCouponCont" wx:else>您已获得 \n <text class="couponPrice">10元</text>Vichy薇姿联名券</text>
+      <view class="getCouponBtn backMainProgram" bindtap="jumpToJJ">去看看</view>
+    </view>
+</view>

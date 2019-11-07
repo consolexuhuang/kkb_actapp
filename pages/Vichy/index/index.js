@@ -139,5 +139,5 @@ Page({
   // 免费领取
   jumpToFreeReceive(){
     this.userActiveState()
-  }
+  },
 })

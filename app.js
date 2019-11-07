@@ -1,7 +1,6 @@
 //app.js
 const api = require('./utils/api.js');
 import Store from './utils/store.js';
-
 App({
   onLaunch: function (options) {
     this.api = api
@@ -84,11 +83,11 @@ App({
     scene:'',
     isIpX: false,
 
-    API_URI: 'https://fit.jlife.vip/wx/api/', //正式api
-    TXMapKey: '4PGBZ-OVSCU-BLTV3-2Q242-P45OH-5LFEB', //正式腾讯密钥
+    // API_URI: 'https://fit.jlife.vip/wx/api/', //正式api
+    // TXMapKey: '4PGBZ-OVSCU-BLTV3-2Q242-P45OH-5LFEB', //正式腾讯密钥
 
-    // API_URI: 'https://dev.jlife.vip/wx/api/', //测试api
-    // TXMapKey: 'UMNBZ-AMQK6-22HS4-EJUVQ-D24LE-BBBK3', //测试腾讯密钥
+    API_URI: 'https://dev.jlife.vip/wx/api/', //测试api
+    TXMapKey: 'UMNBZ-AMQK6-22HS4-EJUVQ-D24LE-BBBK3', //测试腾讯密钥
 
   },
   //校验是否通过登陆

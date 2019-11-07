@@ -10,16 +10,16 @@
    <image class="exchangeBox_bg" src="https://img.cdn.powerpower.net/5da8141ce4b01043d7d74072.png?imageView/1/w/673/h/684"></image>
    <view class="invitedTip">
        <view class="invitedTip_title">目前已成功申领</view>
-       <view class="invitedTip_item invitedTip_item2">邀请<text class="rewardNum rewardNum2">6</text>个好友申领
+       <view class="invitedTip_item invitedTip_item2">邀请<text class="rewardNum rewardNum2">1</text>个好友申领
           <view style="text-align: center">
              <text class="reward">获额外1份薇姿限量礼包</text>
           </view>
        </view>
-      <view class="invitedTip_item">邀请<text class="rewardNum">26</text>个好友          <text class="reward_cont">获10份(2周用量)</text>
+      <view class="invitedTip_item">邀请<text class="rewardNum">3</text>个好友          <text class="reward_cont">获6份薇姿礼包</text>
       </view>
-      <view class="invitedTip_item">邀请<text class="rewardNum">76</text>个好友          <text class="reward_cont">获33份(约4瓶正装)</text>
+      <view class="invitedTip_item">邀请<text class="rewardNum">12</text>个好友          <text class="reward_cont">获36份薇姿礼包</text>
       </view>
-      <view class="invitedTip_item">邀请<text class="rewardNum">146</text>个好友       <text class="reward_cont">获66份(约8瓶正装)</text>
+      <view class="invitedTip_item">邀请<text class="rewardNum">36</text>个好友       <text class="reward_cont">获72份薇姿礼包</text>
       </view>
       <view class="pasteKey" bindtap="clickPasteKey">薇姿旗舰店双十一优惠券抢先领，点击复制口令￥ULHdYKpulkm￥打开淘宝领取</view>
    </view>

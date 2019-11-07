@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "核销页",
   "navigationBarTextStyle": "black",
-  "enablePullDownRefresh": true,
   "backgroundTextStyle":"dark",
   "usingComponents": {}
 }

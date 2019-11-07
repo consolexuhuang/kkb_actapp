@@ -224,7 +224,7 @@ Page({
             that.sharePosteCanvas(obj)
           }
         }
-      }
+      },
     })
   
   },
@@ -387,8 +387,8 @@ Page({
         wx.openLocation({
           name: this.data.giftReceiveInfo.store_name || '',
           address: this.data.giftReceiveInfo.store_address || '',
-          latitude: Number(this.data.giftReceiveInfo.latitude),
-          longitude: Number(this.data.giftReceiveInfo.longitude),
+          latitude: Number(this.data.giftReceiveInfo.store_latitude),
+          longitude: Number(this.data.giftReceiveInfo.store_longitude),
           scale: 18
         })
     }

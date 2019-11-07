@@ -1,6 +1,7 @@
 // pages/informationWord/informationWord.js
 const api = getApp().api;
 const store = getApp().store;
+const log = require('../../../utils/log.js')
 var QQMapWX = require('../../../libs/qqmap-wx-jssdk.js');   // 引入腾讯地图SDK核心类
 
 Page({
@@ -31,6 +32,7 @@ Page({
     api.post('v2/gift/getGiftReceiveConfig', data).then(res => {
       console.log('福利信息内容', res)
       if(res.code === 1 && res.msg){
+        log.info('active is over')
         wx.showModal({
           title: '提示！',
           showCancel: false,
@@ -44,6 +46,7 @@ Page({
           }
         })
       } else {
+          log.info(`getActiveData success`)
           let data_list = []
           for (let i = 0; i < res.msg.data_list.length; i++) {
             data_list.push(`${res.msg.data_list[i].date} 周${res.msg.data_list[i].day}`)
@@ -64,6 +67,7 @@ Page({
     let iv = e.detail.iv;
     let errMsg = e.detail.errMsg
     if (iv == null || ency == null) {
+      info.warn('phone is refused')
       wx.showToast({
         title: "授权失败,请重新授权！",
         icon: 'none',
@@ -228,7 +232,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // console.log('log-------', log)
   },
   // 区域
   bindPickerChange: function (e) {
@@ -268,15 +272,18 @@ Page({
     })
   },
   submit(){
+    log.info('start submit info')
     if (!getApp().globalData.location){
       this.again_getLocation()
     } else if (store.getItem('address') !== '上海市' && store.getItem('userData').order_count === 0) {
+      log.warn('submit address Non conformity')
       wx.showModal({
         showCancel: false,
         title: '提示',
         content: '该活动仅限上海区域，如有疑问请联系客服（微信：JJFitness）',
       })
     } else if (!this.data.activeData.cell_phone){
+      log.warn('submit phone Non conformity')
       wx.showToast({
         title: '您还未授权电话',
         icon:'none'
@@ -290,10 +297,12 @@ Page({
             this.getReserveGiftReceive().then(res_sub => {
               console.log('reserveGiftReceive提交', res_sub)
               if (res_sub.msg && res_sub.code === 0){
+                log.info(`submit end success${res}`)
                 wx.redirectTo({
                   url: '/pages/Vichy/newExchange/newExchange?subFlag=1',
                 })
               } else {
+                log.error(`submit end fail${res}`)
                 wx.showToast({
                   title: res_sub.msg || '提交失败！',
                   icon: 'none'

@@ -1,104 +1,67 @@
 /* pages/Vichy/exchangeSuccess/exchangeSuccess.wxss */
 page{
-  width:750rpx;
-background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(83,192,205,1) 100%);
-  text-align: center;
-  /* height: 100%; */
-  position: relative;
+  height: 100%;
+  background: #E7F4FB
+}
+.contain{
+  background-image: url('https://img.cdn.powerpower.net/5dc27a6ce4b04bee5a1b6b1a.jpg');
+   /* background-image: url('https://img.cdn.powerpower.net/5dc27bb4e4b04bee5a1b6b1c.png'); */
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   height: 100%;
-  flex-direction: column
 }
-.around1{
-  width:36rpx;
-  height:36rpx;
-  background:linear-gradient(152deg,rgba(225,253,255,1) 0%,rgba(83,192,205,1) 100%);
-  box-shadow:0px 15rpx 20rpx 0px rgba(23,230,255,0.3),0px -13rpx 20rpx 0px rgba(0,255,252,0.5);
-  opacity:0.2;
-  filter:blur(0px);
-  border-radius: 50%;
-  position: absolute;
-  right: 50rpx;
-  top: 25rpx;
+.exchangeSuccessContBox{
+  text-align: center;
 }
-.around2{
-  width:67rpx;
-  height:67rpx;
-  background:linear-gradient(152deg,rgba(225,253,255,1) 0%,rgba(83,192,205,1) 100%);
-  box-shadow:0px 15rpx 20rpx 0px rgba(23,230,255,0.3),0px -13rpx 20rpx 0px rgba(0,255,252,0.5);
-  filter:blur(0px);
-  border-radius: 50%;
-  position: absolute;
-  left: 17rpx;
-  top: 167rpx;
+.exchangeSuccessCont{
+  font-size:70rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:bold;
+  color:rgba(33,73,78,1);
+  line-height:100rpx;
+  letter-spacing: 2rpx;
 }
-.around3{
-  width:317rpx;
-  height:317rpx;
-  background:linear-gradient(154deg,rgba(255,255,255,1) 0%,rgba(83,192,205,1) 100%);
-  opacity:0.78;
-  filter:blur(11rpx);
-  border-radius: 50%;
-  position: absolute;
-  left: -117rpx;
-  bottom: 133rpx;
+.exchangeSuccessCont2{
+  font-size:34rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(33,73,78,1);
+  line-height:34rpx;
 }
-.around4{
-  width:195rpx;
-  height:195rpx;
-  background:linear-gradient(152deg,rgba(225,253,255,1) 0%,rgba(83,192,205,1) 100%);
-  box-shadow:0px 15rpx 20rpx 0px rgba(23,230,255,0.3),0px -13rpx 20rpx 0px rgba(0,255,252,0.5);
-  opacity:0.3;
-  filter:blur(15rpx);
-  border-radius: 50%;
-  position: absolute;
-  right: 0rpx;
-  top: 40rpx;
-}
-.around5{
-  width:136rpx;
-  height:136rpx;
-  background:linear-gradient(154deg,rgba(225,247,255,1) 0%,rgba(68,198,223,1) 100%);
-  box-shadow:0px 15rpx 30rpx 0px rgba(0,255,230,0.3),0px -13rpx 20rpx 0px rgba(0,255,231,0.5);
-  filter:blur(0px);
-  border-radius: 50%;
-  position: absolute;
-  right: 40rpx;
-  bottom: 360rpx;
-}
-.around6{
-  width:195rpx;
-  height:195rpx;
-  background:linear-gradient(152deg,rgba(225,253,255,1) 0%,rgba(83,192,205,1) 100%);
-  box-shadow:0px 15rpx 20rpx 0px rgba(23,230,255,0.3),0px -13rpx 20rpx 0px rgba(0,255,252,0.5);
-  opacity:0.3;
-  filter:blur(15rpx);
-  border-radius: 50%;
-  position: absolute;
-  right: -122rpx;
-  bottom: 73rpx;
-}
-.exchangeSuccess{
-  font-size:57rpx;
-  font-family:PingFangSC-Medium,PingFangSC;
-  font-weight:500;
-  color:rgba(51,51,51,1);
-  line-height:79rpx;
-  /* position: absolute;
-  bottom: 0;
-  top: 0;
-  right: 0;
-  left: 0;
-  margin: auto; */
-}
-.activeLogo{
-  position: absolute;
-  width: 385rpx;
-  height: 45rpx;
-  bottom: 60rpx;
+.getCouponBox{
+  font-size:34rpx;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(33,73,78,1);
+  line-height:48rpx;
+  text-align: center;
+  position: fixed;
+  bottom: 135rpx;
   left: 0;
   right: 0;
   margin: 0 auto;
+  letter-spacing: 1rpx;
+}
+.getCouponCont{}
+.couponPrice{
+  font-weight: bold;
+  border-bottom: 6rpx solid #FFF100;
+  line-height:34rpx;
+}
+.getCouponBtn{
+  width:362rpx;
+  background:rgba(33,73,78,1);
+  border-radius:36rpx;
+  font-size:40rpx;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+  line-height:72rpx;
+  text-align: center;
+  margin: 32rpx auto 0;
 }
