@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -82,6 +82,13 @@
 					"id": -1,
 					"name": "pages/Vichy/ruleDetail/ruleDetail",
 					"pathName": "pages/Vichy/ruleDetail/ruleDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Vichy/exchangeSuccess/exchangeSuccess",
+					"pathName": "pages/Vichy/exchangeSuccess/exchangeSuccess",
 					"query": "",
 					"scene": null
 				}
